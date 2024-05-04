@@ -1,0 +1,13 @@
+mixin pagination(pagination)
+    ul.pagination.home-product__pagination
+        if(pagination.currentPage > 1)
+            li.pagination-item
+            a(class="pagination-item__link" href="" link-pagination=pagination.currentPage-1)
+                i.pagination-item__icon.fa-solid.fa-angle-left
+        - for(var i = 1; i <= pagination.totalPages; i++)
+            li(class=`pagination-item ${pagination.currentPage == i ? "pagination-item--active" : ""}`)
+                a(class="pagination-item__link" href="" link-pagination=i) #{i}
+        if(pagination.currentPage < pagination.totalPages)
+            li.pagination-item
+            a(class="pagination-item__link" href="" link-pagination=pagination.currentPage+1)
+                i.pagination-item__icon.fa-solid.fa-angle-right

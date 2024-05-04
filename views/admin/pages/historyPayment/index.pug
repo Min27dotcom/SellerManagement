@@ -1,0 +1,536 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title #{pageTitle}
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+  link(rel='stylesheet' href='/css/base.css')
+  link(rel='stylesheet' href='/css/main.css')
+  link(rel='stylesheet' href='/css/grid.css')
+  link(rel='stylesheet' href='/css/responsive.css')
+  link(rel='stylesheet' href='/assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css')
+  link(href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap' rel='stylesheet')
+.app
+  header.header.header__fixed
+    .grid.wide
+      nav.header__navbar
+        ul.header__navbar-list
+          .header__logo
+            img.header__logo-img(src='/assets/images/logo.png' alt='Logo')
+        ul.header__navbar-list
+          li.header__navbar-item
+            .header__search
+              .header__search-input-wrap
+                input.header__search-input(type='text' placeholder='enter your search...')
+                button.header__search-btn
+                  i.header__search-btn-icon.fa-solid.fa-magnifying-glass
+          li.header__navbar-item
+            button.notify__btn
+              i.header__navbar-icon.fa-solid.fa-bell
+          li.header__navbar-item
+            button.notify__btn
+              i.header__navbar-icon.fa-solid.fa-gear
+          li.header__navbar-item.header__navbar-user
+            img.header__navbar-user-img(src='/assets/images/nguyet_cute.jpg' alt='Em Nguyet Cute')
+            span.header__navbar-user-name Min_27
+            ul.header__navbar-user-menu
+              li.header__navbar-user-item
+                a.header__navbar-user-item-link(href='') My Account
+              li.header__navbar-user-item.header__navbar-user-item--separate
+                a(href='') Logout
+  .app__container.app__container-fixed
+    .grid.wide
+      .row.body__nav
+        | #{pageTitle}
+      .row.body__sub-nav
+        .col.l-6
+          button.create-acc-btn
+            | CREATE ACCOUNT
+            i.fa-solid.fa-user-plus
+        .col.l-6
+          .grid
+            .row.flex-filter-sort
+              .col.l-3
+                .btn-dropdown-box
+                  i.btn-dropdown1.fa-solid.fa-caret-down
+                  |                                             FILTER
+                  i.fa-solid.fa-filter
+              .col.l-3
+                .btn-dropdown-box
+                  i.btn-dropdown2.fa-solid.fa-caret-down
+                  |                                             SORT
+                  i.fa-solid.fa-sort
+        .filter__form
+          form#form-1.form.filter__form-box(action='' method='POST')
+            .form-group
+              p.form-group-title Filter By
+              .form-group-radio
+                input(type='radio' name='filter__method' value='by_age')
+                | By Age
+                input(type='radio' name='filter__method' value='by_status')
+                | By Status
+            .form-group.form-group-age
+              p.form-group-title Filter By Age
+              .form-group-radio
+                input(type='radio' name='age' value='Age <= 25')
+                | Age
+            .form-group.form-group-status
+              p.form-group-title Filter By Status
+              .form-group-radio
+                input(type='radio' name='status' value='active')
+                | Active
+                input(type='radio' name='status' value='inactive')
+                | Inactive
+            button.form-submit.form-submit-display Filter
+        .sort__form
+          form#form-2.form-2.sort__form-box(action='' method='POST')
+            .form-group.form-group-sort
+              p.form-group-title Sort By Username
+              .form-group-radio
+                input(type='radio' name='username' value='desc')
+                | DESC
+                input(type='radio' name='username' value='asc')
+                | ASC
+            button.form-submit.form-submit-display2 Sort
+      .row.header__table
+        .col.l-2
+          .column__name
+            | #{col_1}
+        .col.l-2
+          .column__name
+            | #{col_2}
+        .col.l-2
+          .column__name
+            | #{col_3}
+        .col.l-2
+          .column__name
+            | #{col_4}
+        .col.l-2
+          .column__name
+            | #{col_5}
+        .col.l-2
+          .column__name
+            | #{col_6}
+      .grid.wide.body__table
+      each item in payments
+        .row.table__row
+          .col.l-2
+            .table__row-item
+              .user__box-item
+                img.user_img(src=item.avatar alt=item.username)
+              | #{item.username}
+          .col.l-2
+            .table__row-item
+              | #{item.formatDateOfOrder}
+          .col.l-2
+            .table__row-item
+              | #{item.address}
+          .col.l-2
+            .table__row-item
+              | #{item.username}
+          .col.l-2
+            .table__row-item
+              | #{item.phoneNumber}
+          .col.l-2
+            .action__box
+              //
+                <div class="action__box-item">
+                <a href="" class="action__icon-link">
+                <i class="action__icon fa-solid fa-eye"></i>
+                </a>
+                </div>
+              .action__box-item
+                button.action__icon-link.btn_pencil(href='')
+                  i.action__icon.fa-solid.fa-eye
+              //
+                <div class="action__box-item">
+                <a  href="" class="action__icon-link">
+                <i class="action__icon fa-solid fa-eye"></i>
+                </a>
+                </div>
+ 
+    ul.pagination.home-product__pagination
+      li.pagination-item
+        a.pagination-item__link(href='')
+          i.pagination-item__icon.fa-solid.fa-angle-left
+      li.pagination-item
+        a.pagination-item__link.pagination-item--active(href='') 1
+      li.pagination-item
+        a.pagination-item__link(href='') 2
+      li.pagination-item
+        a.pagination-item__link(href='') 3
+      li.pagination-item
+        a.pagination-item__link(href='') 4
+      li.pagination-item
+        a.pagination-item__link(href='') 5
+      li.pagination-item
+        a.pagination-item__link(href='') ...
+      li.pagination-item
+        a.pagination-item__link(href='') 14
+      li.pagination-item
+        a.pagination-item__link(href='')
+          i.pagination-item__icon.fa-solid.fa-angle-right
+  // modal create acc
+  .modal.modal_create_acc
+    .modal__overlay
+    .modal__body
+      form#form-3.form.create-form(action='' method='POST')
+        .header__form
+          h3.heading CREATE ACCOUNT
+          button.btn-close
+            i.btn-close-icon.fa-solid.fa-xmark
+        .spacer
+        .grid.row
+          .col.l-6
+            .form-group
+              label.form-label(for='fullname') Username:
+              input#fullname.form-control(name='fullname' type='text' placeholder='VD: john_doe')
+              span.form-message
+            .form-group
+              label.form-label(for='email') Email:
+              input#email.form-control(name='email' type='text' placeholder='VD: email@domain.com')
+              span.form-message
+            .form-group
+              label.form-label(for='password') Password:
+              input#password.form-control(name='password' type='password' placeholder='Enter your password')
+              span.form-message
+            .form-group
+              label.form-label(for='password_confirmation') Confirm Password:
+              input#password_confirmation.form-control(name='password_confirmation' type='password' placeholder='Confirm your password')
+              span.form-message
+            .form-group
+              label.form-label(for='address') Address:
+              input#address.form-control(name='address' placeholder='Enter your address' type='text')
+              span.form-message
+            .form-group
+              label.form-label(for='phone_number') Phone Number:
+              input#phone_number.form-control(name='phone_number' placeholder='Enter your phone number' type='text')
+              span.form-message
+          .col.l-6
+            .form-group
+              label.form-label(for='bank_acc_name') Bank Account Name:
+              input#bank_acc_name.form-control(name='bank_acc_name' placeholder='VD: JOHN DOE' type='text')
+              span.form-message
+            .form-group
+              label.form-label(for='bank_acc_number') Bank Account Number:
+              input#bank_acc_number.form-control(name='bank_acc_number' placeholder='Enter your bank account number' type='text')
+              span.form-message
+            .form-group
+              label.form-label(for='bank') Bank:
+              select#bank.form-control(name='bank')
+                option(value='') --Choose your bank--
+                option(value='') Bank of America
+                option(value='') Well Fargo
+                option(value='') Morgan Stanley
+              span.form-message
+            .form-group
+              label.form-label(for='date_of_birth') Date Of Birth:
+              input#date_of_birth.form-control(name='date_of_birth' type='date')
+              span.form-message
+            .form-group
+              label.form-label(for='gender') Gender:
+              .gender__box
+                .gender__box-item
+                  input#gender.form-control(name='gender' type='radio' value='Female')
+                  |  Female
+                .gender__box-item
+                  input#gender.form-control(name='gender' type='radio' value='Male')
+                  |  Male
+              span.form-message
+            .form-group
+              label.form-label(for='avatar') Avatar:
+              input#avatar.form-control(name='avatar' type='file')
+              span.form-message
+        .row.col.l-12
+          button.form-submit ADD
+  // modal details acc
+  .modal.modal_details_acc
+    .modal__overlay.modal__overlay-details
+    .modal__body
+      form#form-4.form.details-acc-form(action='' method='POST')
+        .header__form
+          h3.heading DETAILS ACCOUNT
+          button.btn-close.btn-close-details
+            i.btn-close-icon.fa-solid.fa-xmark
+        .spacer
+        .grid.row
+          .col.l-4
+            .avatar_box
+              .avatar
+                img.avatar_img(src='/assets/images/nguyet_cute.jpg' alt='')
+              button.change-avatar-btn
+                | Upload New Avatar
+          .col.l-4
+            .form-group
+              label.form-label(for='fullname') Username:
+              input#fullname.form-control(name='fullname' type='text' placeholder='VD: john_doe')
+              span.form-message
+            .form-group
+              label.form-label(for='email') Email:
+              input#email.form-control(name='email' type='text' placeholder='VD: email@domain.com')
+              span.form-message
+            .form-group
+              label.form-label(for='password') Password:
+              input#password.form-control(name='password' type='password' placeholder='Enter your password')
+              span.form-message
+            .form-group
+              label.form-label(for='password_confirmation') Confirm Password:
+              input#password_confirmation.form-control(name='password_confirmation' type='password' placeholder='Confirm your password')
+              span.form-message
+            .form-group
+              label.form-label(for='address') Address:
+              input#address.form-control(name='address' placeholder='Enter your address' type='text')
+              span.form-message
+            .form-group
+              label.form-label(for='phone_number') Phone Number:
+              input#phone_number.form-control(name='phone_number' placeholder='Enter your phone number' type='text')
+              span.form-message
+          .col.l-4
+            .form-group
+              label.form-label(for='bank_acc_name') Bank Account Name:
+              input#bank_acc_name.form-control(name='bank_acc_name' placeholder='VD: JOHN DOE' type='text')
+              span.form-message
+            .form-group
+              label.form-label(for='bank_acc_number') Bank Account Number:
+              input#bank_acc_number.form-control(name='bank_acc_number' placeholder='Enter your bank account number' type='text')
+              span.form-message
+            .form-group
+              label.form-label(for='bank') Bank:
+              select#bank.form-control(name='bank')
+                option(value='') --Choose your bank--
+                option(value='') Bank of America
+                option(value='') Well Fargo
+                option(value='') Morgan Stanley
+              span.form-message
+            .form-group
+              label.form-label(for='date_of_birth') Date Of Birth:
+              input#date_of_birth.form-control(name='date_of_birth' type='date')
+              span.form-message
+            .form-group
+              label.form-label(for='gender') Gender:
+              .gender__box
+                .gender__box-item
+                  input#gender.form-control(name='gender' type='radio' value='Female')
+                  |  Female
+                .gender__box-item
+                  input#gender.form-control(name='gender' type='radio' value='Male')
+                  |  Male
+              span.form-message
+        .row.col.l-12
+          button.form-submit UPDATE
+  // modal detail admin acc
+  .modal.modal_detail_admin_acc
+    .modal__overlay.modal__overlay-detail-admin
+    .modal__body
+      form#form-6.form.details-acc-form(action='' method='POST')
+        .header__form
+          h3.heading YOUR ACCOUNT
+          button.btn-close.btn-close-detail-admin
+            i.btn-close-icon.fa-solid.fa-xmark
+        .spacer
+        .grid.row
+          .col.l-4
+            .avatar_box
+              .avatar
+                img.avatar_img(src='/assets/images/nguyet_cute.jpg' alt='Em Nguyet cute')
+              button.change-avatar-btn
+                | Upload New Avatar
+          .col.l-4
+            .form-group
+              label.form-label(for='fullname') Username:
+              input#fullname.form-control(name='fullname' type='text' placeholder='VD: john_doe')
+              span.form-message
+            .form-group
+              label.form-label(for='email') Email:
+              input#email.form-control(name='email' type='text' placeholder='VD: email@domain.com')
+              span.form-message
+            .form-group
+              label.form-label(for='password') Password:
+              input#password.form-control(name='password' type='password' placeholder='Enter your password')
+              span.form-message
+            .form-group
+              label.form-label(for='password_confirmation') Confirm Password:
+              input#password_confirmation.form-control(name='password_confirmation' type='password' placeholder='Confirm your password')
+              span.form-message
+            .form-group
+              label.form-label(for='address') Address:
+              input#address.form-control(name='address' placeholder='Enter your address' type='text')
+              span.form-message
+            .form-group
+              label.form-label(for='phone_number') Phone Number:
+              input#phone_number.form-control(name='phone_number' placeholder='Enter your phone number' type='text')
+              span.form-message
+          .col.l-4
+            .form-group
+              label.form-label(for='bank_acc_name') Bank Account Name:
+              input#bank_acc_name.form-control(name='bank_acc_name' placeholder='VD: JOHN DOE' type='text')
+              span.form-message
+            .form-group
+              label.form-label(for='bank_acc_number') Bank Account Number:
+              input#bank_acc_number.form-control(name='bank_acc_number' placeholder='Enter your bank account number' type='text')
+              span.form-message
+            .form-group
+              label.form-label(for='bank') Bank:
+              select#bank.form-control(name='bank')
+                option(value='') --Choose your bank--
+                option(value='') Bank of America
+                option(value='') Well Fargo
+                option(value='') Morgan Stanley
+              span.form-message
+            .form-group
+              label.form-label(for='date_of_birth') Date Of Birth:
+              input#date_of_birth.form-control(name='date_of_birth' type='date')
+              span.form-message
+            .form-group
+              label.form-label(for='gender') Gender:
+              .gender__box
+                .gender__box-item
+                  input#gender.form-control(name='gender' type='radio' value='Female')
+                  |  Female
+                .gender__box-item
+                  input#gender.form-control(name='gender' type='radio' value='Male')
+                  |  Male
+              span.form-message
+        .row.col.l-12
+          button.form-submit UPDATE
+  // modal change avatar
+  .modal.modal__change-avatar
+    .modal__overlay.modal__overlay-avatar
+    .modal__body
+      form#form-5.form.change__avatar-form(action='' method='POST')
+        .header__form
+          h3.heading SELECT FILE
+          button.btn-close.btn-close-change-avatar
+            i.btn-close-icon.fa-solid.fa-xmark
+        .spacer
+        .row.col.l-12
+          .form-group
+            label.form-label(for='avatar') Avatar:
+            input#avatar.form-control(name='avatar' type='file')
+            span.form-message
+        .row.col.l-12
+          button.form-submit UPDATE
+  footer.footer
+    .grid.footer_background
+script(src='/js/script.js')
+//- // <script src="./validator.js"></script>
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+  // Mong muốn của chúng ta
+  Validator({
+  form: '#form-3',
+  formGroupSelector: '.form-group',
+  errorSelector: '.form-message',
+  rules: [
+  Validator.isRequired('#fullname', 'Enter your username!'),
+  Validator.isEmail('#email'),
+  Validator.minLength('#password', 6),
+  Validator.isRequired('#password_confirmation'),
+  Validator.isRequired('#address'),
+  Validator.isRequired('#phone_number'),
+  Validator.isRequired('#bank_acc_name'),
+  Validator.isRequired('#bank_acc_number'),
+  Validator.isRequired('#bank'),
+  Validator.isRequired('#date_of_birth'),
+  Validator.isRequired('#gender'),
+  Validator.isRequired('#avatar'),
+  Validator.isConfirmed('#password_confirmation', function () {
+  return document.querySelector('#form-3 #password').value;
+  }, 'Password error!')
+  ],
+  onSubmit: function (data) {
+  // Call API
+  console.log(data);
+  }
+  });
+  });
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+  // Mong muốn của chúng ta
+  Validator({
+  form: '#form-4',
+  formGroupSelector: '.form-group',
+  errorSelector: '.form-message',
+  rules: [
+  Validator.isRequired('#fullname', 'Enter your username!'),
+  Validator.isEmail('#email'),
+  Validator.minLength('#password', 6),
+  Validator.isRequired('#password_confirmation'),
+  Validator.isRequired('#address'),
+  Validator.isRequired('#phone_number'),
+  Validator.isRequired('#bank_acc_name'),
+  Validator.isRequired('#bank_acc_number'),
+  Validator.isRequired('#bank'),
+  Validator.isRequired('#date_of_birth'),
+  Validator.isRequired('#gender'),
+  Validator.isRequired('#avatar'),
+  Validator.isConfirmed('#password_confirmation', function () {
+  return document.querySelector('#form-4 #password').value;
+  }, 'Password error!')
+  ],
+  onSubmit: function (data) {
+  // Call API
+  console.log(data);
+  }
+  });
+  });
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+  // Mong muốn của chúng ta
+  Validator({
+  form: '#form-5',
+  formGroupSelector: '.form-group',
+  errorSelector: '.form-message',
+  rules: [
+  Validator.isRequired('#fullname', 'Enter your username!'),
+  Validator.isEmail('#email'),
+  Validator.minLength('#password', 6),
+  Validator.isRequired('#password_confirmation'),
+  Validator.isRequired('#address'),
+  Validator.isRequired('#phone_number'),
+  Validator.isRequired('#bank_acc_name'),
+  Validator.isRequired('#bank_acc_number'),
+  Validator.isRequired('#bank'),
+  Validator.isRequired('#date_of_birth'),
+  Validator.isRequired('#gender'),
+  Validator.isRequired('#avatar'),
+  Validator.isConfirmed('#password_confirmation', function () {
+  return document.querySelector('#form-5 #password').value;
+  }, 'Password error!')
+  ],
+  onSubmit: function (data) {
+  // Call API
+  console.log(data);
+  }
+  });
+  });
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+  // Mong muốn của chúng ta
+  Validator({
+  form: '#form-6',
+  formGroupSelector: '.form-group',
+  errorSelector: '.form-message',
+  rules: [
+  Validator.isRequired('#fullname', 'Enter your username!'),
+  Validator.isEmail('#email'),
+  Validator.minLength('#password', 6),
+  Validator.isRequired('#password_confirmation'),
+  Validator.isRequired('#address'),
+  Validator.isRequired('#phone_number'),
+  Validator.isRequired('#bank_acc_name'),
+  Validator.isRequired('#bank_acc_number'),
+  Validator.isRequired('#bank'),
+  Validator.isRequired('#date_of_birth'),
+  Validator.isRequired('#gender'),
+  Validator.isRequired('#avatar'),
+  Validator.isConfirmed('#password_confirmation', function () {
+  return document.querySelector('#form-6 #password').value;
+  }, 'Password error!')
+  ],
+  onSubmit: function (data) {
+  // Call API
+  console.log(data);
+  }
+  });
+  });

@@ -1,0 +1,428 @@
+
+//database account
+[{
+    "username": "john_doe",
+    "password": "X7kE2rP5q",
+    "confirmation_password": "X7kE2rP5q",
+    "address": "123 Main Street, Springfield",
+    "phoneNumber": "555-1234",
+    "dateOfBirth": "1990-06-24",
+    "gender": "Male",
+    "avatar": "https://i.pinimg.com/474x/31/f3/89/31f38987ca12362154ddf9f9d70c3f9b.jpg",
+    "email": "john_doe@example.com",
+    "bankAccountName": "John Doe",
+    "bankAccountNumber": "1234567890",
+    "bank": "Bank of America",
+    "blocked": false,
+    "deleted": false
+},
+
+{
+    "username": "jane_smith",
+    "password": "W3sR8hY1f",
+    "confirmation_password": "W3sR8hY1f",
+    "address": "456 Elm Avenue, Lakeside",
+    "phoneNumber": "555-5678",
+    "dateOfBirth": "1985-06-07",
+    "gender": "Female",
+    "avatar": "https://i.pinimg.com/236x/ed/de/f9/eddef99412e4681bc2fd9f3c67d57b88.jpg",
+    "email": "jane_smith@example.com",
+    "bankAccountName": "Jane Smith",
+    "bankAccountNumber": "2345678901",
+    "bank": "Wells Fargo",
+    "blocked": false,
+    "deleted": false
+},
+
+{
+    "username": "sarah_wilson",
+    "password": "A9dP6qS2w",
+    "confirmation_password": "A9dP6qS2w",
+    "address": "987 Cedar Court, Valleyview",
+    "phoneNumber": "555-2345",
+    "dateOfBirth": "1982-07-11",
+    "gender": "Female",
+    "avatar": "https://anhdephd.vn/wp-content/uploads/2022/04/anh-gai-xinh-chau-au-my-1.jpg",
+    "email": "sarah_wilson@example.com",
+    "bankAccountName": "Sarah Wilson",
+    "bankAccountNumber": "6789012345",
+    "bank": "Morgan Stanley",
+    "blocked": false,
+    "deleted": false
+},
+
+{
+    "username": "michael_johnson",
+    "password": "E4fG9iU2o",
+    "confirmation_password": "E4fG9iU2o",
+    "address": "789 Oak Lane, Rivertown",
+    "phoneNumber": "555-9012",
+    "dateOfBirth": "1974-10-10",
+    "gender": "Male",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZzG_cAHMjzHP_vuujYs_hebPc40K56o0M3zkLB4wulw&s",
+    "email": "michael_johnson@example.com",
+    "bankAccountName": "Michael Johnson",
+    "bankAccountNumber": "3456789012",
+    "bank": "Bank of America",
+    "blocked": false,
+    "deleted": false
+},
+
+{
+    "username": "emily_brown",
+    "password": "K1lM6nB3v",
+    "confirmation_password": "K1lM6nB3v",
+    "address": "321 Pine Street, Hillcrest",
+    "phoneNumber": "555-1234",
+    "dateOfBirth": "1989-04-12",
+    "gender": "Female",
+    "avatar": "https://icdn.24h.com.vn/upload/4-2020/images/2020-10-17/13-1602929795-737-width650height813.jpg",
+    "email": "emily_brown@example.com",
+    "bankAccountName": "Emily Brown",
+    "bankAccountNumber": "4567890123",
+    "bank": "Bank of America",
+    "blocked": false,
+    "deleted": false
+},
+
+{
+    "username": "david_lee",
+    "password": "M2bN5jH8l",
+    "confirmation_password": "M2bN5jH8l",
+    "address": "654 Maple Road, Sunset",
+    "phoneNumber": "555-7890",
+    "dateOfBirth": "1995-03-22",
+    "gender": "Male",
+    "avatar": "https://nld.mediacdn.vn/thumb_w/540/2015/a-1427767066848.jpg",
+    "email": "david_lee@example.com",
+    "bankAccountName": "David Lee",
+    "bankAccountNumber": "5678901234",
+    "bank": "Bank of America",
+    "blocked": false,
+    "deleted": false
+}, 
+{
+    "username": "robert_martinez",
+    "password": "R5sD1fG8h",
+    "confirmation_password": "R5sD1fG8h",
+    "address": "147 Birch Boulevard, Brookside",
+    "phoneNumber": "555-6789",
+    "dateOfBirth": "1979-12-05",
+    "gender": "Male",
+    "avatar": "https://vuatocgia.com/medias/2022/09/kieu-toc-nam-chau-au-thong-tin.png.webp",
+    "email": "robert_martinez@example.com",
+    "bankAccountName": "Robert Martinez",
+    "bankAccountNumber": "7890123456",
+    "bank": "Bank of America",
+    "blocked": false,
+    "deleted": false
+},
+
+{
+    "username": "jennifer_taylor",
+    "password": "F3gH8jK2l",
+    "confirmation_password": "F3gH8jK2l",
+    "address": "258 Willow Lane, Mountainview",
+    "phoneNumber": "555-0123",
+    "dateOfBirth": "1998-08-30",
+    "gender": "Female",
+    "avatar": "https://khoinguonsangtao.vn/wp-content/uploads/2022/10/hinh-anh-gai-xinh-chau-au-my-tuyet-dep.jpg",
+    "email": "jennifer_taylor@example.com",
+    "bankAccountName": "Jennifer Taylor",
+    "bankAccountNumber": "8901234567",
+    "bank": "Bank of America",
+    "blocked": false,
+    "deleted": false
+
+}, 
+{
+    "username": "william_anderson",
+    "password": "L7kM9pO2q",
+    "confirmation_password": "L7kM9pO2q",
+    "address": "369 Cherry Street, Woodland",
+    "phoneNumber": "555-4567",
+    "dateOfBirth": "1987-02-19",
+    "gender": "Male",
+    "avatar": "https://phunugioi.com/wp-content/uploads/2020/11/hinh-anh-trai-dep-nhat.jpg",
+    "email": "william_anderson@example.com",
+    "bankAccountName": "William Anderson",
+    "bankAccountNumber": "9012345678",
+    "bank": "Bank of America",
+    "blocked": false,
+    "deleted": false
+},
+{
+    "username": "jessica_thomas",
+    "password": "B4nE7rT1y",
+    "confirmation_password": "B4nE7rT1y",
+    "address": "852 Aspen Avenue, Lakeshore",
+    "phoneNumber": "555-8901",
+    "dateOfBirth": "1990-01-01",
+    "gender": "Female",
+    "avatar": "https://anhdephd.vn/wp-content/uploads/2022/04/anh-gai-xinh-chau-au-my-dep-tua-thien-than.jpg",
+    "email": "jessica_thomas@example.com",
+    "bankAccountName": "David Lee",
+    "bankAccountNumber": "0123456789",
+    "bank": "Bank of America",
+    "blocked": false,
+    "deleted": false
+}
+]
+
+
+// list data blocked
+,{
+    "username": "robert_martinez",
+    "password": "R5sD1fG8h",
+    "confirmation_password": "R5sD1fG8h",
+    "address": "147 Birch Boulevard, Brookside",
+    "phoneNumber": "555-6789",
+    "dateOfBirth": "1995-05-12",
+    "gender": "Male",
+    "avatar": "https://vuatocgia.com/medias/2022/09/kieu-toc-nam-chau-au-thong-tin.png.webp",
+    "email": "robert_martinez@example.com",
+    "bankAccountName": "Robert Martinez",
+    "bankAccountNumber": "7890123456",
+    "bank": "Bank of America",
+    "blocked": true,
+    "deleted": false
+}, {
+    "username": "jennifer_taylor",
+    "password": "F3gH8jK2l",
+    "confirmation_password": "F3gH8jK2l",
+    "address": "654 Maple Road, Sunset",
+    "phoneNumber": "555-7890",
+    "dateOfBirth": "1995-03-22",
+    "gender": "Male",
+    "avatar": "https://khoinguonsangtao.vn/wp-content/uploads/2022/10/hinh-anh-gai-xinh-chau-au-my-tuyet-dep.jpg",
+    "email": "jennifer_taylor@example.com",
+    "bankAccountName": "Jennifer Taylor",
+    "bankAccountNumber": "8901234567",
+    "bank": "Bank of America",
+    "blocked": true,
+    "deleted": false
+}, {
+    "username": "william_anderson",
+    "password": "L7kM9pO2q",
+    "confirmation_password": "L7kM9pO2q",
+    "address": "369 Cherry Street, Woodland",
+    "phoneNumber": "555-4567",
+    "dateOfBirth": "1987-02-19",
+    "gender": "Male",
+    "avatar": "https://phunugioi.com/wp-content/uploads/2020/11/hinh-anh-trai-dep-nhat.jpg",
+    "email": "william_anderson@example.com",
+    "bankAccountName": "William Anderson",
+    "bankAccountNumber": "9012345678",
+    "bank": "Bank of America",
+    "blocked": true,
+    "deleted": false
+}, {
+    "username": "jessica_thomas",
+    "password": "B4nE7rT1y",
+    "confirmation_password": "B4nE7rT1y",
+    "address": "852 Aspen Avenue, Lakeshore",
+    "phoneNumber": "555-8901",
+    "dateOfBirth": "1990-01-01",
+    "gender": "Female",
+    "avatar": "https://anhdephd.vn/wp-content/uploads/2022/04/anh-gai-xinh-chau-au-my-dep-tua-thien-than.jpg",
+    "email": "jessica_thomas@example.com",
+    "bankAccountName": "Jessica Thomas",
+    "bankAccountNumber": "0123456789",
+    "bank": "Bank of America",
+    "blocked": true,
+    "deleted": false
+}
+
+]
+
+//database products
+[
+    {
+        "name": "Floral Maxi Dress",
+        "color": "red",
+        "size": "S",
+        "quantity": 15,
+        "importPrice": 15,
+        "price": 49.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+    },
+
+    {
+        "name": "Elegant Cocktail Dress",
+        "color": "blue",
+        "size": "M",
+        "quantity": 20,
+        "importPrice": 28,
+        "price": 54.99,
+        "productImg": "https://i.pinimg.com/736x/2a/47/1f/2a471fe13b49b9c9dcd05b0acc6d2762.jpg"
+    },
+
+    {
+        "name": "Boho Chic Maxi Dress",
+        "color": "black",
+        "size": "L",
+        "quantity": 25,
+        "importPrice": 30,
+        "price": 49.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLCJ1OgRZ_EtIH0JjBoCR3EbpAIXD_xZt9SRDdzrtBnA&s"
+    },
+
+    {
+        "name": "Vintage Lace Dress",
+        "color": "white",
+        "size": "S",
+        "quantity": 18,
+        "importPrice": 25,
+        "price": 49.99,
+        "productImg": "https://i.ebayimg.com/images/g/dyMAAOSwUDVh8jh8/s-l1200.webp"
+    },
+
+    {
+        "name": "Formal Evening Gown",
+        "color": "yellow",
+        "size": "S",
+        "quantity": 20,
+        "importPrice": 25,
+        "price": 49.99,
+        "productImg": "https://i.ebayimg.com/images/g/ObMAAOSw6-NkAZVe/s-l1200.webp"
+    },
+
+    {
+        "name": "Little Black Dress",
+        "color": "pink",
+        "size": "M",
+        "quantity": 22,
+        "importPrice": 28,
+        "price": 54.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzShSaq8LW4Dmm3zDoT5zA1KsBi1hf16DwTZ9FwJecR_9EqzP3dFzNbeJYgY1KhVa9dwk&usqp=CAU"
+    },
+
+    {
+        "name": "Casual Summer Dress",
+        "color": "green",
+        "size": "L",
+        "quantity": 28,
+        "importPrice": 30,
+        "price": 59.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+    },
+]
+
+[
+    {
+
+        "username": "john_doe",
+        "address": "123 Main Street, Springfield",
+        "phoneNumber": "555-1234",
+        "avatar": "https://i.pinimg.com/474x/31/f3/89/31f38987ca12362154ddf9f9d70c3f9b.jpg",
+        "bankAccountName": "John Doe",
+        "bankAccountNumber": "1234567890",
+        "bank": "Bank of America",
+        "blocked": false,
+        "dateOfOrder": "2022-01-01",
+        "dateOfPayment": "2022-01-01",
+        "products": [
+            {
+                "name": "Casual,
+                "deleted": false Summer Dress",
+                "color": "green",
+                "size": "L",
+                "quantity": 2,
+                "price": 59.99,
+                "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+            },
+            {
+                "name": "Floral Maxi Dress",
+                "color": "red",
+                "size": "S",
+                "quantity": 1,
+                "price": 49.99,
+                "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+            }
+        ]
+    },
+
+    {
+
+        "username": "jane_smith",
+        "address": "456 Elm Avenue, Lakeside",
+        "phoneNumber": "555-5678",
+        "avatar": "https://i.pinimg.com/236x/ed/de/f9/eddef99412e4681bc2fd9f3c67d57b88.jpg",
+        "bankAccountName": "Jane Smith",
+        "bankAccountNumber": "2345678901",
+        "bank": "Wells Fargo",
+        "blocked": false,
+        "dateOfOrder": "2022-01-05",
+        "dateOfPayment": "2022-01-05",
+        "products": [
+            {
+                "name": "Casual,
+                "deleted": false Summer Dress",
+                "color": "green",
+                "size": "L",
+                "quantity": 1,
+                "price": 59.99,
+                "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+            },
+            {
+                "name": "Floral Maxi Dress",
+                "color": "red",
+                "size": "S",
+                "quantity": 2,
+                "price": 49.99,
+                "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+            }, 
+            {
+                "name": "Boho Chic Maxi Dress",
+                "color": "black",
+                "size": "L",
+                "quantity": 3,
+                "importPrice": 30,
+                "price": 49.99,
+                "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLCJ1OgRZ_EtIH0JjBoCR3EbpAIXD_xZt9SRDdzrtBnA&s"
+            }
+        ]
+    },
+    {
+
+        "username": "michael_johnson",
+        "address": "789 Oak Lane, Rivertown",
+        "phoneNumber": "555-9012",
+        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZzG_cAHMjzHP_vuujYs_hebPc40K56o0M3zkLB4wulw&s",
+        "bankAccountName": "Michael Johnson",
+        "bankAccountNumber": "3456789012",
+        "bank": "Bank of America",
+        "blocked": false,
+        "dateOfOrder": "2022-01-06",
+        "dateOfPayment": "2022-01-06",
+        "products": [
+            {
+                "name": "Vintag,
+                "deleted": falsee Lace Dress",
+                "color": "white",
+                "size": "S",
+                "quantity": 4,
+                "importPrice": 25,
+                "price": 49.99,
+                "productImg": "https://i.ebayimg.com/images/g/dyMAAOSwUDVh8jh8/s-l1200.webp"
+            },
+            {
+                "name": "Floral Maxi Dress",
+                "color": "red",
+                "size": "S",
+                "quantity": 1,
+                "price": 49.99,
+                "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+            }, 
+            {
+                "name": "Boho Chic Maxi Dress",
+                "color": "black",
+                "size": "L",
+                "quantity": 3,
+                "importPrice": 30,
+                "price": 49.99,
+                "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLCJ1OgRZ_EtIH0JjBoCR3EbpAIXD_xZt9SRDdzrtBnA&s"
+            }
+        ]
+    },
+]
