@@ -1,6 +1,23 @@
 
 //database account
 [{
+    "username": "min_27",
+    "password": "Nguyetminh250503",
+    "confirmation_password": "Nguyetminh250503",
+    "address": "196 TDH str, Trung Hoa, Cau Giay, Ha Noi",
+    "phoneNumber": "0358245441",
+    "dateOfBirth": "2003-05-25",
+    "gender": "Female",
+    "avatar": "https://i.pinimg.com/474x/31/f3/89/31f38987ca12362154ddf9f9d70c3f9b.jpg",
+    "email": "john_doe@example.com",
+    "bankAccountName": "John Doe",
+    "bankAccountNumber": "1234567890",
+    "bank": "Bank of America",
+    "blocked": false,
+    "deleted": false
+},
+    
+    {
     "username": "john_doe",
     "password": "X7kE2rP5q",
     "confirmation_password": "X7kE2rP5q",
@@ -323,8 +340,8 @@
         "dateOfPayment": "2022-01-01",
         "products": [
             {
-                "name": "Casual,
-                "deleted": false Summer Dress",
+                "name": "Casual Summer Dress",
+                "deleted": false ,
                 "color": "green",
                 "size": "L",
                 "quantity": 2,
@@ -356,8 +373,8 @@
         "dateOfPayment": "2022-01-05",
         "products": [
             {
-                "name": "Casual,
-                "deleted": false Summer Dress",
+                "name": "Casual Summer Dress",
+                "deleted": false,
                 "color": "green",
                 "size": "L",
                 "quantity": 1,
@@ -397,8 +414,8 @@
         "dateOfPayment": "2022-01-06",
         "products": [
             {
-                "name": "Vintag,
-                "deleted": falsee Lace Dress",
+                "name": "Vintag Lace Dress",
+                "deleted": false,
                 "color": "white",
                 "size": "S",
                 "quantity": 4,
@@ -426,3 +443,233 @@
         ]
     },
 ]
+
+
+
+"dateOfOrder": "2022-01-01",
+  "dateOfPayment": "2022-01-01",
+  "products": [
+      {
+          "name": "Casual Summer Dress",
+          "deleted": false ,
+          "color": "green",
+          "size": "L",
+          "quantity": 2,
+          "price": 59.99,
+          "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+      },
+      {
+          "name": "Floral Maxi Dress",
+          "color": "red",
+          "size": "S",
+          "quantity": 1,
+          "price": 49.99,
+          "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+      }
+  ],
+
+
+  "dateOfOrder": "2022-01-05",
+  "dateOfPayment": "2022-01-05",
+  "products": [
+      {
+          "name": "Casual Summer Dress",
+          "deleted": false,
+          "color": "green",
+          "size": "L",
+          "quantity": 1,
+          "price": 59.99,
+          "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+      },
+      {
+          "name": "Floral Maxi Dress",
+          "color": "red",
+          "size": "S",
+          "quantity": 2,
+          "price": 49.99,
+          "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+      }, 
+      {
+          "name": "Boho Chic Maxi Dress",
+          "color": "black",
+          "size": "L",
+          "quantity": 3,
+          "importPrice": 30,
+          "price": 49.99,
+          "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLCJ1OgRZ_EtIH0JjBoCR3EbpAIXD_xZt9SRDdzrtBnA&s"
+      }
+  ],
+
+  "dateOfOrder": "2022-01-06",
+  "dateOfPayment": "2022-01-06",
+  "products": [
+      {
+          "name": "Vintag Lace Dress",
+          "deleted": false,
+          "color": "white",
+          "size": "S",
+          "quantity": 4,
+          "importPrice": 25,
+          "price": 49.99,
+          "productImg": "https://i.ebayimg.com/images/g/dyMAAOSwUDVh8jh8/s-l1200.webp"
+      },
+      {
+          "name": "Floral Maxi Dress",
+          "color": "red",
+          "size": "S",
+          "quantity": 1,
+          "price": 49.99,
+          "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+      }, 
+      {
+          "name": "Boho Chic Maxi Dress",
+          "color": "black",
+          "size": "L",
+          "quantity": 3,
+          "importPrice": 30,
+          "price": 49.99,
+          "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLCJ1OgRZ_EtIH0JjBoCR3EbpAIXD_xZt9SRDdzrtBnA&s"
+      }
+  ],
+
+  "dateOfOrder": "2022-01-08",
+  "dateOfPayment": "2022-01-08",
+  "products": [
+      {
+          "name": "Casual Summer Dress",
+          "deleted": false ,
+          "color": "green",
+          "size": "L",
+          "quantity": 2,
+          "price": 59.99,
+          "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+      },
+      {
+          "name": "Floral Maxi Dress",
+          "color": "red",
+          "size": "S",
+          "quantity": 1,
+          "price": 49.99,
+          "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+      }
+  ],
+
+  "products": [
+    {
+        "name": "Casual Summer Dress",
+        "deleted": false ,
+        "color": "green",
+        "size": "L",
+        "quantity": 2,
+        "price": 59.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+    },
+    {
+        "name": "Floral Maxi Dress",
+        "color": "red",
+        "size": "S",
+        "quantity": 1,
+        "price": 49.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+    }
+  ],
+
+  "products": [
+    {
+        "name": "Casual Summer Dress",
+        "deleted": false ,
+        "color": "green",
+        "size": "L",
+        "quantity": 2,
+        "price": 59.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+    },
+    {
+        "name": "Floral Maxi Dress",
+        "color": "red",
+        "size": "S",
+        "quantity": 1,
+        "price": 49.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+    }
+  ],
+
+  "products": [
+    {
+        "name": "Casual Summer Dress",
+        "deleted": false ,
+        "color": "green",
+        "size": "L",
+        "quantity": 2,
+        "price": 59.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+    },
+    {
+        "name": "Floral Maxi Dress",
+        "color": "red",
+        "size": "S",
+        "quantity": 1,
+        "price": 49.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+    }
+  ],
+
+  "products": [
+    {
+        "name": "Casual Summer Dress",
+        "deleted": false ,
+        "color": "green",
+        "size": "L",
+        "quantity": 2,
+        "price": 59.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+    },
+    {
+        "name": "Floral Maxi Dress",
+        "color": "red",
+        "size": "S",
+        "quantity": 1,
+        "price": 49.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+    }
+],
+
+"products": [
+    {
+        "name": "Casual Summer Dress",
+        "deleted": false ,
+        "color": "green",
+        "size": "L",
+        "quantity": 2,
+        "price": 59.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+    },
+    {
+        "name": "Floral Maxi Dress",
+        "color": "red",
+        "size": "S",
+        "quantity": 1,
+        "price": 49.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+    }
+],
+
+"products": [
+    {
+        "name": "Casual Summer Dress",
+        "deleted": false ,
+        "color": "green",
+        "size": "L",
+        "quantity": 2,
+        "price": 59.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFaNsMghMy6Gwb3On9Zm110g1lCfO4DZ2gJi75to1Pg&s.jpg"
+    },
+    {
+        "name": "Floral Maxi Dress",
+        "color": "red",
+        "size": "S",
+        "quantity": 1,
+        "price": 49.99,
+        "productImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5K1zw3QiQWNCtqwJuTKrOqRu5KBSYPGf62vkbbdVFQ&s"
+    }
+],

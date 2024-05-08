@@ -56,6 +56,7 @@ module.exports.index = async (req, res) => {
         return item;
     })
     result = newDashboard;
+//lọc tuổi
     let filter = "";
     if(req.query.agefilter){
         filter = req.query.agefilter
@@ -90,12 +91,35 @@ module.exports.index = async (req, res) => {
         
     }
 
+//sort by name
 
+function sortByNameASC(arr) {
+    return arr.sort(function(a, b) {
+      return a.username.localeCompare(b.username);
+    });
+}
+
+function sortByNameDESC(arr) {
+    return arr.sort(function(a, b) {
+      return b.username.localeCompare(a.username);
+    });
+}
+
+if(req.query.sort){
+    sort = req.query.sort
+    if (sort == 1){
+        let nameSort = sortByNameASC(dashboard);
+        result = nameSort;
+    }
+    else if (sort == 2){
+        let nameSort = sortByNameDESC(dashboard);   
+        result = nameSort;
+    }
+}
 
 //render route
     res.render("admin/pages/dashboard/index", {
         pageTitle: "Dashboard",
-        userName: "John Doe",
         col_1: "Username",        
         col_2: "Phone Number",
         col_3: "Address",
@@ -148,22 +172,52 @@ module.exports.changeMulti = async (req, res) => {
     res.redirect("back");
 }
 
-// //[GET] /dashboard/create
-// module.exports.create = async (req, res) => {
-//     res.render("admin/pages/dashboard/create", {
-//         pageTitle: "Add Account",
-//     });
-// }
+//[GET] /dashboard/create
+module.exports.create = async (req, res) => {
+    res.render("admin/pages/dashboard/create", {
+        pageTitle: "Add Account",
+    });
+}
 
 //[POST] /dashboard/create
-module.exports.createPost = async (req, res) => {
-    if(req.file){
+module.exports.createPost = async (req, res) => {    
+    // Kiểm tra xem username hoặc số tài khoản ngân hàng đã tồn tại hay chưa
+    const username = await Dashboard.findOne({
+        username: req.body.username,
+        deleted: false
+    });
+
+    const bankAccountNumber = await Dashboard.findOne({
+        bankAccountNumber: req.body.bankAccountNumber,
+        deleted: false
+    });
+
+    if (username) {
+        req.flash("error", " Username Already Exists!");
+        return res.redirect("/dashboard/create");
+    } 
+
+    if (bankAccountNumber) {
+        req.flash("error", "Bank Account Already Exists!");
+        return res.redirect("/dashboard/create");
+    } 
+
+    if (req.file) {
         req.body.avatar = `/uploads/${req.file.filename}`
     }
+
     const newAcc = new Dashboard(req.body);
-    await newAcc.save();
-    res.redirect("/dashboard");
+
+    try {
+        await newAcc.save();
+        req.flash("success", "Add Account Success!");
+        res.redirect("/dashboard/create");
+    } catch (error) {
+        req.flash("error", "Add Account Failed!");
+        res.redirect("/dashboard/create");
+    }
 }
+
 
 //[GET] /dashboard/update/:id
 module.exports.update = async (req, res) => {
@@ -173,7 +227,8 @@ module.exports.update = async (req, res) => {
             _id: req.params.id
         }
         const acc = await Dashboard.findOne(findAcc);
-        console.log(acc);
+
+
         res.render("admin/pages/dashboard/update", {
             pageTitle: "Update account",
             acc: acc
@@ -190,7 +245,28 @@ module.exports.updatePatch = async (req, res) => {
     if(req.file){
         req.body.avatar = `/uploads/${req.file.filename}`
     }
+
+    const username = await Dashboard.findOne({
+        username: req.body.username,
+        deleted: false
+    });
+    //thiếu thực hiện sửa một thuộc tính 2 lần liên tiếp đã có trong csdl
+    const bankAccountNumber = await Dashboard.findOne({
+        bankAccountNumber: req.body.bankAccountNumber,
+        deleted: false
+    });
+
+    if (username) {
+        req.flash("error", " Username Already Exists!");
+        return res.redirect("back");
+    } 
+
+    if (bankAccountNumber) {
+        req.flash("error", "Bank Account Already Exists!");
+        return res.redirect("back");
+    } 
     try {
+        
         await Dashboard.updateOne({_id: id}, req.body);
         req.flash("success", "Update success!");
 
@@ -204,14 +280,14 @@ module.exports.updatePatch = async (req, res) => {
 module.exports.deleteAcc = async (req, res) => {
     const id = req.params.id;
     //xóa cứng
-    // await Dashboard.deleteOne({ _id: id});
+    await Dashboard.deleteOne({ _id: id});
     //xóa mềm
-    await Dashboard.updateOne({ _id: id}, {
-        deleted: true,
-        deletedAt: new Date()
-    });
+    // await Dashboard.updateOne({ _id: id}, {
+    //     deleted: true,
+    //     deletedAt: new Date()
+    // });
     //hiển thị thông báo thành công
-    req.flash("success", "Update status success!");
+    req.flash("success", "Delete Account Success!");
 
     res.redirect("back");
 }

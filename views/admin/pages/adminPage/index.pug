@@ -1,0 +1,178 @@
+
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title #{pageTitle}
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+  link(rel='stylesheet' href='/css/base.css')
+  link(rel='stylesheet' href='/css/main.css')
+  link(rel='stylesheet' href='/css/grid.css')
+  link(rel='stylesheet' href='/css/responsive.css')
+  link(rel='stylesheet' href='/assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css')
+  link(href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap' rel='stylesheet')
+
+.modal
+    if(messages.error)
+        .message.info
+            div(
+                class="alert alert-error"
+                show-alert 
+                data-time="5000"
+            ) #{messages.error}
+                span(close-alert) x
+    if(messages.success)
+        .message.info
+            div(
+                class="alert alert-success"
+                show-alert 
+                data-time="5000"
+            ) #{messages.success}
+                span(close-alert) x
+    .modal__overlay.modal__overlay-details
+    .modal__body
+      form#form-4.form.details-acc-form(action=`/dashboard/update/${acc.id}?_method=PATCH` method='POST'
+        enctype='multipart/form-data'
+      )
+        .header__form
+          h3.heading DETAILS ACCOUNT
+          button.btn-close.btn-close-details
+            i.btn-close-icon.fa-solid.fa-xmark
+        .spacer
+        .grid.row
+          .col.l-6
+            .form-group
+              label.form-label(for='username') Username:
+              input#username.form-control(
+                name='username' 
+                type='text' 
+                placeholder='VD: john_doe'
+                value=acc.username
+                )
+              span.form-message
+            .form-group
+              label.form-label(for='email') Email:
+              input#email.form-control(
+                name='email' 
+                type='text' 
+                placeholder='VD: email@domain.com'
+                value=acc.email
+
+                )
+              span.form-message
+            .form-group
+              label.form-label(for='password') Password:
+              input#password.form-control(
+                name='password' 
+                type='password' 
+                placeholder='Enter your password'
+                value=acc.password
+                
+                )
+              span.form-message
+            .form-group
+              label.form-label(for='confirmation_password') Confirm Password:
+              input#confirmation_password.form-control(
+                name='confirmation_password' 
+                type='password' 
+                placeholder='Confirm your password'
+                value=acc.password
+                
+
+                )
+              span.form-message
+            .form-group
+              label.form-label(for='address') Address:
+              input#address.form-control(
+                name='address' 
+                placeholder='Enter your address' 
+                type='text'
+                value=acc.address
+                
+                )
+              span.form-message
+            .form-group
+              label.form-label(for='phoneNumber') Phone Number:
+              input#phoneNumber.form-control(
+                name='phoneNumber' 
+                placeholder='Enter your phone number' 
+                type='text'
+                value=acc.phoneNumber
+                
+                )
+              span.form-message
+          .col.l-6
+            .form-group
+              label.form-label(for='bankAccountName') Bank Account Name:
+              input#bankAccountName.form-control(
+                name='bankAccountName' 
+                placeholder='VD: JOHN DOE' 
+                type='text'
+                value=acc.bankAccountName
+
+                )
+              span.form-message
+            .form-group
+              label.form-label(for='bankAccountNumber') Bank Account Number:
+              input#bankAccountNumber.form-control(
+                name='bankAccountNumber' 
+                placeholder='Enter your bank account number'
+                type='text'
+                value=acc.bankAccountNumber
+                )
+              span.form-message
+            .form-group
+              label.form-label(for='bank') Bank:
+              select#bank.form-control(name='bank' )
+                option(value=acc.bank) #{acc.bank}
+                option(value='Bank of America') Bank of America
+                option(value='Well Fargo') Well Fargo
+                option(value='Morgan Stanley') Morgan Stanley
+              span.form-message
+            .form-group
+              label.form-label(for='dateOfBirth') Date Of Birth:
+              input#dateOfBirth.form-control(
+                name='dateOfBirth' 
+                type='date'
+                value=acc.dateOfBirth
+                )
+              span.form-message
+            .form-group
+              label.form-label(for='gender') Gender:
+              .gender__box
+                .gender__box-item
+                  input#gender.form-control(
+                    name='gender' 
+                    type='radio' 
+                    value='Female'
+                    checked=(acc.gender == 'Female' ? true : false)
+                    )
+                  |  Female
+                .gender__box-item
+                  input#gender.form-control(
+                    name='gender' 
+                    type='radio' 
+                    value='Male'
+                    checked=(acc.gender == 'Male' ? true : false)
+                    )
+                  |  Male
+              span.form-message
+            .form-group(upload-image)
+              label.form-label(for='avatar') Avatar:
+              input#avatar.form-control(name='avatar' type='file' accept="image/*" upload-image-input)
+              img(
+                src=acc.avatar
+                upload-image-preview
+                class="image-prev"
+              )
+              span.form-message
+        .row.col.l-12
+          button.form-submit UPDATE
+    script(src='/js/script.js')
+
+            //-   .col.l-4
+            //-     .avatar_box
+            //-       .avatar
+            //-         img.avatar_img(src='/assets/images/nguyet_cute.jpg' alt='')
+            //-       button.change-avatar-btn
+            //-         | Upload New Avatar

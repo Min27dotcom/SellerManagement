@@ -3,6 +3,7 @@ const listBlockedRoute = require("./listBlocked.route");
 const historyPaymentRoute = require("./historyPayment.route");
 const homeRoute = require("./home.route");
 const loginRoute = require("./login.route");
+const adminPageRoute = require("./adminPage.route");
 const systemConfig = require("../../config/system");
 module.exports = (app) => {
     const PATH_DASHBOARD = systemConfig.prefixDashboard;
@@ -12,6 +13,7 @@ module.exports = (app) => {
     app.use(PATH_DASHBOARD + "/listBlocked", listBlockedRoute);
     app.use("/historyPayment", historyPaymentRoute);
     app.use("/", loginRoute);
+    app.use("/adminPage", adminPageRoute);
     
 }
 

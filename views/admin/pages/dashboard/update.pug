@@ -9,35 +9,35 @@ head
   link(rel='stylesheet' href='/css/main.css')
   link(rel='stylesheet' href='/css/grid.css')
   link(rel='stylesheet' href='/css/responsive.css')
+  link(rel='stylesheet' href='/css/create.css')
   link(rel='stylesheet' href='/assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css')
   link(href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap' rel='stylesheet')
 
 .modal
     if(messages.error)
         .message.info
-            div(
-                class="alert alert-error"
-                show-alert 
-                data-time="5000"
-            ) #{messages.error}
-                span(close-alert) x
+          div(
+              class="alert alert-error"
+              show-alert 
+              data-time="5000"
+          ) #{messages.error}
+              span(close-alert) x
     if(messages.success)
         .message.info
-            div(
-                class="alert alert-success"
-                show-alert 
-                data-time="5000"
-            ) #{messages.success}
-                span(close-alert) x
-    .modal__overlay.modal__overlay-details
+          div(
+              class="alert alert-success"
+              show-alert 
+              data-time="5000"
+          ) #{messages.success}
+              span(close-alert) x
     .modal__body
       form#form-4.form.details-acc-form(action=`/dashboard/update/${acc.id}?_method=PATCH` method='POST'
         enctype='multipart/form-data'
       )
         .header__form
           h3.heading DETAILS ACCOUNT
-          button.btn-close.btn-close-details
-            i.btn-close-icon.fa-solid.fa-xmark
+          a.btn-close(href='/dashboard')
+            i(class="btn-close-icon fa-solid fa-arrow-left")
         .spacer
         .grid.row
           .col.l-6
@@ -168,7 +168,7 @@ head
               span.form-message
         .row.col.l-12
           button.form-submit UPDATE
-    script(src='/js/script.js')
+    //- script(src='/js/script.js')
 
             //-   .col.l-4
             //-     .avatar_box
@@ -176,3 +176,34 @@ head
             //-         img.avatar_img(src='/assets/images/nguyet_cute.jpg' alt='')
             //-       button.change-avatar-btn
             //-         | Upload New Avatar
+script(src='/js/update.js')
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+  // Mong muốn của chúng ta
+  Validator({
+  form: '#form-4',
+  formGroupSelector: '.form-group',
+  errorSelector: '.form-message',
+  rules: [
+  Validator.isRequired('#username', 'Enter your username!'),
+  Validator.isEmail('#email'),
+  Validator.minLength('#password', 6),
+  Validator.isRequired('#confirmation_password'),
+  Validator.isRequired('#address'),
+  Validator.isRequired('#phoneNumber'),
+  Validator.isRequired('#bankAccountName'),
+  Validator.isRequired('#bankAccountNumber'),
+  //- Validator.isRequired('#bank'),
+  Validator.isRequired('#dateOfBirth'),
+  Validator.isRequired('#gender'),
+  Validator.isRequired('#avatar'),
+  Validator.isConfirmed('#confirmation-password', function () {
+  return document.querySelector('#form-4 #password').value;
+  }, 'Password error!')
+  ],
+  onSubmit: function (data) {
+  // Call API
+  console.log(data);
+  }
+  });
+  });

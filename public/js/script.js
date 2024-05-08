@@ -269,26 +269,26 @@ usernameSortRadioBtns.forEach(radioBtn => {
 // kết thúc xử lý ẩn hiện filter selections
 
 //bắt sự kiện modal create form
-const modalCreateForm = document.querySelector(".modal.modal_create_acc");
-const modalOverlay = document.querySelector(".modal__overlay");
-const btnCreateAcc = document.querySelector(".create-acc-btn");
-const btnCloseCreateModal = document.querySelector(".btn-close");
+// const modalCreateForm = document.querySelector(".modal.modal_create_acc");
+// const modalOverlay = document.querySelector(".modal__overlay");
+// const btnCreateAcc = document.querySelector(".create-acc-btn");
+// const btnCloseCreateModal = document.querySelector(".btn-close");
 
-function showModalCreateForm() {
-    modalCreateForm.classList.add('show');
-}
+// function showModalCreateForm() {
+//     modalCreateForm.classList.add('show');
+// }
 
-function hideModalCreateForm() {
-    modalCreateForm.classList.remove('show');
-}
+// function hideModalCreateForm() {
+//     modalCreateForm.classList.remove('show');
+// }
 
-btnCreateAcc.addEventListener('click', showModalCreateForm);
-modalOverlay.addEventListener('click', hideModalCreateForm);
-btnCloseCreateModal.addEventListener('click', hideModalCreateForm);
+// btnCreateAcc.addEventListener('click', showModalCreateForm);
+// modalOverlay.addEventListener('click', hideModalCreateForm);
+// btnCloseCreateModal.addEventListener('click', hideModalCreateForm);
 
-modalCreateForm.addEventListener('click', function (event) {
-    event.stopPropagation()
-})
+// modalCreateForm.addEventListener('click', function (event) {
+//     event.stopPropagation()
+// })
 
 //bắt sự kiện details form
 
@@ -334,7 +334,7 @@ modalChangeAvatar.addEventListener('click', function (event) {
     event.stopPropagation()
 })
 
-// bắt sự kiện chuyển trang
+// pagination
 // Lấy tất cả các thẻ li có class pagination-item
 var paginationItems = document.querySelectorAll('.pagination-item');
 
@@ -353,8 +353,19 @@ paginationItems.forEach(function(item) {
         item.classList.add('pagination-item--active');
     });
 });
+const linkPaginations = document.querySelectorAll("[link-pagination]");
+if(linkPaginations){
+    let url = new URL(window.location.href);
+    linkPaginations.forEach(link => {
+        link.addEventListener("click", () => {
+            const page = link.getAttribute("link-pagination");
+            url.searchParams.set("page", page);
+            window.location.href = url.href;
+        })
+    })
+}
 
-//bắt sự kiện details admin form
+//details admin form
 
 const modalDetailAdminAcc = document.querySelector(".modal.modal_detail_admin_acc");
 const modalOverlayAdminDetail = document.querySelector(".modal__overlay.modal__overlay-detail-admin");
@@ -382,7 +393,7 @@ if(formSearch){
     let url = new URL(window.location.href);
     formSearch.addEventListener("submit", (e) => {
         e.preventDefault();
-        new_url = new URL(url.origin + url.pathname)
+        new_url = new URL(url.origin + url.pathname);
         const keyword = e.target.elements.keyword.value;
         if(keyword){
             new_url.searchParams.set("keyword", keyword);
@@ -390,27 +401,16 @@ if(formSearch){
             new_url.searchParams.delete("keyword");
         }
         
-        window.location.href = new_url.href;
+        window.location.href = new_url.href;        
     });
 }
 
 // bắt sự kiện lọc
 //lọc theo trạng thái & lọc theo độ tuổi khách hàng
-const filterMethodBtns = document.querySelectorAll("[name='filter__method']");
-const filterStatusBtns = document.querySelectorAll("[name='status']");
-const filterAgeBtns = document.querySelectorAll("[name='age']");
+const filterMethodBtns = document.querySelectorAll("input[name='filter__method']");
+const filterStatusBtns = document.querySelectorAll("input[name='status']");
+const filterAgeBtns = document.querySelectorAll("input[name='age']");
 const filterBtn = document.querySelector(".filter__btn");
-
-function calculateAge(birthDate) {
-    const today = new Date();
-    const birth = new Date(birthDate);
-    let age = today.getFullYear() - birth.getFullYear();
-    const monthDiff = today.getMonth() - birth.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-        age--;
-    }
-    return age;
-}
 
 if(filterMethodBtns.length > 0){
     let url = new URL(window.location.href);
@@ -461,16 +461,30 @@ if(filterMethodBtns.length > 0){
     })
 }
 
-// bắt sự kiện phân trang
-const linkPaginations = document.querySelectorAll("[link-pagination]");
-if(linkPaginations){
+//sort by username
+const sortRadios = document.querySelectorAll("input[name='sortByName']");
+const sortBtn = document.querySelector(".sort__btn");
+
+if(sortRadios.length > 0){
     let url = new URL(window.location.href);
-    linkPaginations.forEach(link => {
-        link.addEventListener("click", () => {
-            const page = link.getAttribute("link-pagination");
-            url.searchParams.set("page", page);
-            window.location.href = url.href;
-        })
+    new_url = new URL(url.origin + url.pathname)
+    sortRadios.forEach(btn => {
+        btn.addEventListener("change", () => {
+            const value = btn.getAttribute("value");
+            sortBtn.setAttribute("value", value);
+            sortBtn.addEventListener("click", () => {
+                const valueSortClick = sortBtn.getAttribute("value");
+                console.log(valueSortClick);
+                if(valueSortClick === 'asc') {
+                    url.searchParams.set("sort", "1");
+                } else if(valueSortClick === 'desc') {
+                    url.searchParams.set("sort", "2");
+                } else {
+                    url.searchParams.delete("sort");
+                }
+                window.location.href = url.href;
+            })
+        });
     })
 }
 
@@ -582,6 +596,7 @@ if(showAlert) {
 }
 
 //upload image
+console.log("ok");
 const uploadImage = document.querySelector('[upload-image]');
 if(uploadImage) {
     const uploadImageInput = document.querySelector('[upload-image-input]');
@@ -612,6 +627,7 @@ if(buttonDeletes.length > 0) {
         });
     });
 };
+
 
 
 

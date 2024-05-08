@@ -8,83 +8,105 @@ head
   link(rel='stylesheet' href='/css/main.css')
   link(rel='stylesheet' href='/css/grid.css')
   link(rel='stylesheet' href='/css/responsive.css')
+  link(rel='stylesheet' href='/css/create.css')
   link(rel='stylesheet' href='/assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css')
   link(href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap' rel='stylesheet')
-.modal.modal_create_acc.show
-    .modal__overlay
-    .modal__body
-      form#form-3.form.create-form(action='/dashboard/create' method='POST')
-        .header__form
-          h3.heading CREATE ACCOUNT
-          button.btn-close
-            i.btn-close-icon.fa-solid.fa-xmark
-        .spacer
-        .grid.row
-          .col.l-6
-            .form-group
-              label.form-label(for='fullname') Username:
-              input#fullname.form-control(name='fullname' type='text' placeholder='VD: john_doe' required)
-              span.form-message
-            .form-group
-              label.form-label(for='email') Email:
-              input#email.form-control(name='email' type='email' placeholder='VD: email@domain.com' required)
-              span.form-message
-            .form-group
-              label.form-label(for='password') Password:
-              input#password.form-control(name='password' type='password' placeholder='Enter your password' required)
-              span.form-message
-            .form-group
-              label.form-label(for='password_confirmation') Confirm Password:
-              input#password_confirmation.form-control(name='password_confirmation' type='password' placeholder='Confirm your password' required)
-              span.form-message
-            .form-group
-              label.form-label(for='address') Address:
-              input#address.form-control(name='address' placeholder='Enter your address' type='text' required)
-              span.form-message
-            .form-group
-              label.form-label(for='phone_number') Phone Number:
-              input#phone_number.form-control(name='phone_number' placeholder='Enter your phone number' type='text' required)
-              span.form-message
-          .col.l-6
-            .form-group
-              label.form-label(for='bank_acc_name') Bank Account Name:
-              input#bank_acc_name.form-control(name='bank_acc_name' placeholder='VD: JOHN DOE' type='text' required)
-              span.form-message
-            .form-group
-              label.form-label(for='bank_acc_number') Bank Account Number:
-              input#bank_acc_number.form-control(name='bank_acc_number' placeholder='Enter your bank account number' type='text' required)
-              span.form-message
-            .form-group
-              label.form-label(for='bank') Bank:
-              select#bank.form-control(name='bank' required)
-                option(value='') --Choose your bank--
-                option(value='bank_of_america') Bank of America
-                option(value='well_fargo') Well Fargo
-                option(value='morgan_stanley') Morgan Stanley
-              span.form-message
-            .form-group
-              label.form-label(for='date_of_birth') Date Of Birth:
-              input#date_of_birth.form-control(name='date_of_birth' type='date' required)
-              span.form-message
-            .form-group
-              label.form-label(for='gender') Gender:
-              .gender__box
-                .gender__box-item
-                  input#gender.form-control(name='gender' type='radio' value='Female')
-                  |  Female
-                .gender__box-item
-                  input#gender.form-control(name='gender' type='radio' value='Male')
-                  |  Male
-              span.form-message
-            .form-group
-              label.form-label(for='avatar') Avatar:
-              input#avatar.form-control(name='avatar' type='file' required)
-              span.form-message
-        .row.col.l-12
-          button.form-submit ADD
+.modal
+  if(messages.success)
+    .message.info
+      div(
+        class="alert alert-success"
+        show-alert 
+        data-time="5000"
+      ) #{messages.success}
+        span(close-alert) x
+  if(messages.error)
+    .message.info
+      div(
+        class="alert alert-error"
+        show-alert 
+        data-time="5000"
+      ) #{messages.error}
+        span(close-alert) x
+  .modal__body
+    form#form-3.form.create-form(action='/dashboard/create' method='POST' enctype="multipart/form-data")
+      .header__form
+        h3.heading CREATE ACCOUNT
+        a.btn-close(href='/dashboard')
+          i(class="btn-close-icon fa-solid fa-arrow-left")
+      .spacer
+      .grid.row
+        .col.l-6
+          .form-group
+            label.form-label(for='username') Username:
+            input#username.form-control(name='username' type='text' placeholder='VD: john_doe')
+            span.form-message
+          .form-group
+            label.form-label(for='email') Email:
+            input#email.form-control(name='email' type='email' placeholder='VD: email@domain.com')
+            span.form-message
+          .form-group
+            label.form-label(for='password') Password:
+            input#password.form-control(name='password' type='password' placeholder='Enter your password')
+            span.form-message
+          .form-group
+            label.form-label(for='confirmation_password') Confirm Password:
+            input#confirmation_password.form-control(name='confirmation_password' type='password' placeholder='Confirm your password')
+            span.form-message
+          .form-group
+            label.form-label(for='address') Address:
+            input#address.form-control(name='address' placeholder='Enter your address' type='text')
+            span.form-message
+          .form-group
+            label.form-label(for='phoneNumber') Phone Number:
+            input#phoneNumber.form-control(name='phoneNumber' placeholder='Enter your phone number' type='text')
+            span.form-message
+        .col.l-6
+          .form-group
+            label.form-label(for='bankAccountName') Bank Account Name:
+            input#bankAccountName.form-control(name='bankAccountName' placeholder='VD: JOHN DOE' type='text')
+            span.form-message
+          .form-group
+            label.form-label(for='bankAccountNumber') Bank Account Number:
+            input#bankAccountNumber.form-control(name='bankAccountNumber' placeholder='Enter your bank account number' type='text')
+            span.form-message
+          .form-group
+            label.form-label(for='bank') Bank:
+            select#bank.form-control(name='bank')
+              option(value='') --Choose your bank--
+              option(value='Bank of America') Bank of America
+              option(value='Well Fargo') Well Fargo
+              option(value='Morgan Stanley') Morgan Stanley
+            span.form-message
+          .form-group
+            label.form-label(for='dateOfBirth') Date Of Birth:
+            input#dateOfBirth.form-control(name='dateOfBirth' type='date')
+            span.form-message
+          .form-group
+            label.form-label(for='gender') Gender:
+            .gender__box
+              .gender__box-item
+                input#gender.form-control(name='gender' type='radio' value='Female')
+                |  Female
+              .gender__box-item
+                input#gender.form-control(name='gender' type='radio' value='Male')
+                |  Male
+            span.form-message
+          .form-group(upload-image)
+            label.form-label(for='avatar') Avatar:
+            input#avatar.form-control(name='avatar' type='file' accept="image/*" upload-image-input)
+            img(
+              src=""
+              upload-image-preview
+              class="image-prev"
+            )
+            span.form-message
+      .row.col.l-12
+        button.form-submit ADD
 
 
-script(src='/js/script.js')
+//- script(src='/js/script.js')
+script(src='/js/create.js')
 script.
   document.addEventListener('DOMContentLoaded', function () {
   // Mong muốn của chúng ta
@@ -93,19 +115,19 @@ script.
   formGroupSelector: '.form-group',
   errorSelector: '.form-message',
   rules: [
-  Validator.isRequired('#fullname', 'Enter your username!'),
+  Validator.isRequired('#username', 'Enter your username!'),
   Validator.isEmail('#email'),
   Validator.minLength('#password', 6),
-  Validator.isRequired('#password_confirmation'),
+  Validator.isRequired('#confirmation_password'),
   Validator.isRequired('#address'),
-  Validator.isRequired('#phone_number'),
-  Validator.isRequired('#bank_acc_name'),
-  Validator.isRequired('#bank_acc_number'),
+  Validator.isRequired('#phoneNumber'),
+  Validator.isRequired('#bankAccountName'),
+  Validator.isRequired('#bankAccountNumber'),
   //- Validator.isRequired('#bank'),
-  Validator.isRequired('#date_of_birth'),
+  Validator.isRequired('#dateOfBirth'),
   Validator.isRequired('#gender'),
   Validator.isRequired('#avatar'),
-  Validator.isConfirmed('#password_confirmation', function () {
+  Validator.isConfirmed('#confirmation-password', function () {
   return document.querySelector('#form-3 #password').value;
   }, 'Password error!')
   ],

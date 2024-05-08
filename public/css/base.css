@@ -12,6 +12,7 @@
     --body-nav-height: 60px;
     --body-color: #f2f4f6;
     --btn-height: 40px;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 * {

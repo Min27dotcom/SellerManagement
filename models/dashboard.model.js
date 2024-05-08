@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const slug = require('mongoose-slug-updater');
 mongoose.plugin(slug);
+// const Schema = mongoose.Schema;
 
-const DashboardSchema = new mongoose.Schema({
+const DashboardSchema = mongoose.Schema({
     username: String,
     password: String,
     address: String,
@@ -28,10 +29,9 @@ const DashboardSchema = new mongoose.Schema({
         slug: "username",
         unique: true
     }
-}, {
-    timestamps: true
+    }, {
+        timestamps: true
 });
-
 //Dashboard đầu tiên là tên biến, Dashboard thứ 2 là tên model, accounts là tên bảng connection trong mongodb
-const Dashboard = mongoose.model("Dashboard", DashboardSchema, "accounts");
+const Dashboard = mongoose.model("accounts", DashboardSchema, "accounts");
 module.exports = Dashboard;

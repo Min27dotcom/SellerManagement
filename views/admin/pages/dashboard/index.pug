@@ -20,6 +20,14 @@ head
         data-time="5000"
       ) #{messages.success}
         span(close-alert) x
+  if(messages.error)
+    .message.info
+      div(
+        class="alert alert-error"
+        show-alert 
+        data-time="5000"
+      ) #{messages.error}
+        span(close-alert) x
   //- +alert-success(5000)
      
 
@@ -48,33 +56,37 @@ head
             span.header__navbar-user-name Min_27
             ul.header__navbar-user-menu
               li.header__navbar-user-item
+                a.header__navbar-user-item-link(href='../home') Home
+              li.header__navbar-user-item
                 a.header__navbar-user-item-link(href='') My Account
               li.header__navbar-user-item.header__navbar-user-item--separate
-                a(href='') Logout
+                a(href='../historyPayment') History Payment
+              li.header__navbar-user-item.header__navbar-user-item--separate
+                a(href='../') Logout
   .app__container.app__container-fixed(checkbox-multi)
     .grid.wide
       .row.body__nav
-        | DASHBOARD
+        a(class="body__nav-link" href="#") #{pageTitle}
       .row.body__sub-nav
-        .col.l-4
-          button.create-acc-btn CREATE ACCOUNT
-            //- a(
-            //-   href=`/dashboard/create`
-            //-   class="btn btn-outline-success"
-            //- ) CREATE ACCOUNT
-            i.fa-solid.fa-user-plus
-        .col.l-3
-          form#form-7.form-status(action='/dashboard/change-multi?_method=PATCH' method='POST' form-change-multi)
-            .form-select-status 
-              select(name = "type" class="form-control")
-                option(disabled selected) --Choose Action--
-                option(value="active") Active
-                option(value="inactive") Inactive
-                option(value="delete-all") Delete All
-            .form-status-box  
-              input(type='text' name='ids' value='' class = 'input-status d-none')
-              button.form-submit.form-submit-status Apply
-        .col.l-5
+        .col.l-6
+          .option_box
+            //- button.create-acc-btn CREATE ACCOUNT
+            a(
+              href=`../dashboard/create`
+              class="btn btn-outline-success btn-create-acc"
+            ) CREATE ACCOUNT
+              i.fa-solid.fa-user-plus
+            form#form-7.form-status(action='/dashboard/change-multi?_method=PATCH' method='POST' form-change-multi)
+              .form-select-status 
+                select(name = "type" class="form-control")
+                  option(disabled selected) --Choose Action--
+                  option(value="active") Active
+                  option(value="inactive") Inactive
+                  option(value="delete-all") Delete All
+              .form-status-box  
+                input(type='text' name='ids' value='' class = 'input-status d-none')
+                button.form-submit.form-submit-status Apply
+        .col.l-6
           .grid
             .row.flex-filter-sort
               .col.l-3
@@ -114,20 +126,20 @@ head
                 input(type='radio' name='status' value='')
                 | All
                 input(type='radio' name='status' value='blocked')
-                | Blocked
+                | Inactive
                 input(type='radio' name='status' value='unblocked')
-                | Unblocked
+                | Active
             button.form-submit.form-submit-display.filter__btn Filter
         .sort__form
           form#form-2.form-2.sort__form-box(action='' method='POST')
             .form-group.form-group-sort
               p.form-group-title Sort By Username
               .form-group-radio
-                input(type='radio' name='username' value='desc')
+                input(type='radio' name='sortByName' value='desc')
                 | DESC
-                input(type='radio' name='username' value='asc')
+                input(type='radio' name='sortByName' value='asc')
                 | ASC
-            button.form-submit.form-submit-display2 Sort
+            button.form-submit.form-submit-display2.sort__btn Sort
       .row.header__table
         .col.l-2
           .column__name
@@ -176,18 +188,20 @@ head
                 .action__box-item
                   a.action__icon-link.btn_action.btn_pencil(href=`/dashboard/update/${item.id}`)
                     i.action__icon.fa-solid.fa-pencil
-                  button.action__icon-link.btn_action(
+                  a.action__icon-link.btn_action(
                   button-delete data-id=item.id)
                     <i class="action__icon fa-solid fa-trash-can"></i>
                     
                   if(item.blocked == true)
-                    button(class="blocked-btn" btn-change-blocked
+                    a( btn-change-blocked class="action__icon-link btn_action btn-inactive"
                         data-id = item.id
-                        data-status = 'inactive') Unblock
+                        data-status = 'inactive') 
+                        <i class="fa-solid fa-user-plus"></i>
                   else
-                    button(class="blocked-btn" btn-change-blocked
+                    a( btn-change-blocked class="action__icon-link btn_action btn-active"
                         data-id = item.id
-                        data-status = 'active') Block
+                        data-status = 'active') 
+                        <i class="action__icon fa-solid fa-user-minus"></i>
                   input(type='checkbox' name='id' value=item.id class='input-checkbox')
                   
 
@@ -502,7 +516,7 @@ head
         .row.col.l-12
           button.form-submit UPDATE
   footer.footer
-    .grid.footer_background
+    //- .grid.footer_background
 script(src='/js/script.js')
 //- // <script src="./validator.js"></script>
 script.
@@ -647,6 +661,37 @@ script.
   Validator.isRequired('#avatar'),
   Validator.isConfirmed('#password_confirmation', function () {
   return document.querySelector('#form-6 #password').value;
+  }, 'Password error!')
+  ],
+  onSubmit: function (data) {
+  // Call API
+  console.log(data);
+  }
+  });
+  });
+
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+  // Mong muốn của chúng ta
+  Validator({
+  form: '#form-3',
+  formGroupSelector: '.form-group',
+  errorSelector: '.form-message',
+  rules: [
+  Validator.isRequired('#fullname', 'Enter your username!'),
+  Validator.isEmail('#email'),
+  Validator.minLength('#password', 6),
+  Validator.isRequired('#password_confirmation'),
+  Validator.isRequired('#address'),
+  Validator.isRequired('#phone_number'),
+  Validator.isRequired('#bank_acc_name'),
+  Validator.isRequired('#bank_acc_number'),
+  Validator.isRequired('#bank'),
+  Validator.isRequired('#date_of_birth'),
+  Validator.isRequired('#gender'),
+  Validator.isRequired('#avatar'),
+  Validator.isConfirmed('#password_confirmation', function () {
+  return document.querySelector('#form-3 #password').value;
   }, 'Password error!')
   ],
   onSubmit: function (data) {

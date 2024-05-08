@@ -28,7 +28,7 @@ database.connect();
 //
 app.use(methodOverride('_method'))
 //cấu hình pug
-app.set("views", `${__dirname}/views`);
+app.set("views", "./views");
 app.set("view engine", "pug");
 //kết thúc cấu hình pug
 
@@ -36,9 +36,9 @@ app.set("view engine", "pug");
 app.locals.prefixDashboard = systemConfig.prefixDashboard;
 
 //nhúng file tĩnh
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static("public"));
 
-//flash
+//flash-in ra thông báo
 app.use(cookieParser('keyboard cat'));
 app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());

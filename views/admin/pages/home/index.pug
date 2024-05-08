@@ -1,37 +1,34 @@
-//- nhúng layout chung vào, dùng extends
-
-
-//- extends ../../layouts/default.pug
-
-//- block main
-//-     h1 Trang chủ
-
-
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(http-equiv='X-UA-Compatible' content='IE=Edge')
-  meta(name='viewport' content='width=device-width, initial-scale=1')
-  title #{pageTitle}
-  link(rel='preconnect' href='https://fonts.googleapis.com')
-  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
-  link(href='https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap' rel='stylesheet')
-  link(rel='stylesheet' href='/css/home.css')
-.thumbnail
-  img.ellipse-771(src='assets/vectors/ellipse771_x2.svg')
-  img.rectangle-337(src='assets/vectors/rectangle337_x2.svg')
-  img.rectangle-336(src='assets/vectors/rectangle336_x2.svg')
-  .text #{pageTitle}
-  .frame-492811
-    span.text-3
-      a(href='/manageAccount') #{page_1}
-    img.vector-2(src='assets/vectors/vector108_x2.svg')
-  .frame-49292
-    .frame-49281
-      span.text-1
-        a(href='/manageAccountDashboard') #{page_2}
-      img.vector(src='assets/vectors/vector114_x2.svg')
-  .frame-49277
-    span.text-2
-      a(href='/historyPayment') #{page_3}
-    img.vector-1(src='assets/vectors/vector62_x2.svg')
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel='stylesheet' href='/css/base.css')
+    link(rel='stylesheet' href='/css/grid.css')
+    link(rel='stylesheet' href='/css/home.css')
+
+    title 
+  body
+  .home
+    .grid.wide
+      .row-home
+          p.home__title ADMIN DASHBOARD 
+          .page 
+            a.page-link(href="/adminPage") Your Account
+              
+              
+          .page 
+            a.page-link(href="/dashboard") Account Dashboard
+         
+              
+              
+          .page 
+            a.page-link(href="/historyPayment") History Payment Dashboard
+         
+              
+              
+          .page 
+            a.page-link(href="/") Logout
+         
+              
+              

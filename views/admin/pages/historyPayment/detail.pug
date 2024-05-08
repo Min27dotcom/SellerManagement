@@ -1,0 +1,175 @@
+
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title #{pageTitle}
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+  link(rel='stylesheet' href='/css/base.css')
+  link(rel='stylesheet' href='/css/main.css')
+  link(rel='stylesheet' href='/css/grid.css')
+  link(rel='stylesheet' href='/css/responsive.css')
+  link(rel='stylesheet' href='/css/historyPayment.css')
+  link(rel='stylesheet' href='/assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css')
+  link(href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap' rel='stylesheet')
+
+.app
+    if(messages.error)
+        .message.info
+            div(
+                class="alert alert-error"
+                show-alert 
+                data-time="5000"
+            ) #{messages.error}
+                span(close-alert) x
+    if(messages.success)
+        .message.info
+            div(
+                class="alert alert-success"
+                show-alert 
+                data-time="5000"
+            ) #{messages.success}
+                span(close-alert) x
+    .app__container
+        .grid.wide
+            .row
+                form#form-4(action=`/historyPayment/detail/${payment.id}?_method=PATCH` method='POST'
+                    enctype='multipart/form-data'
+                )
+                    .header-form
+                        h3.heading #{pageTitle}
+                        a.btn-close.btn-close-details(href="/historyPayment")
+                            i(class="btn-close-icon fa-solid fa-arrow-left") 
+                    .spacer
+                    .grid.row
+                        .col.l-6
+                            .grid.row 
+                                .col.l-4
+                                    .user-img-box 
+                                        img.user-img(src=payment.buyer.avatar, alt=payment.buyer.username)
+                                .col.l-8.margin-top
+                                    .row.user-row 
+                                        .col.l-12.user-col
+                                            p.title-col Full Name:
+                                            p.content   #{payment.buyer.bankAccountName}
+                                    .row.user-row 
+                                        .col.l-12.user-col
+                                            p.title-col Date Of Birth:
+                                            p.content #{payment.buyer.dateOfBirth}
+                                    .row.user-row 
+                                        .col.l-12.user-col
+                                            p.title-col Gender:
+                                            p.content #{payment.buyer.gender}
+                                    .row.user-row 
+                                        .col.l-12.user-col
+                                            p.title-col Address:
+                                            p.content #{payment.buyer.address}
+                                    .row.user-row 
+                                        .col.l-12.user-col
+                                            p.title-col Phone Number:
+                                            p.content #{payment.buyer.phoneNumber}
+                                    .row.user-row 
+                                        .col.l-12.user-col
+                                            p.title-col Email:
+                                            p.content #{payment.buyer.email}
+                                    .row.user-row 
+                                        .col.l-12.user-col
+                                            p.title-col Bank:
+                                            p.content #{payment.buyer.bank}
+                                    .row.user-row 
+                                        .col.l-12.user-col
+                                            p.title-col Bank Account Number:
+                                            p.content #{payment.buyer.bankAccountNumber}
+
+                        .col.l-6
+                            .grid 
+                                p.title-table Product Table:
+                                .row.header__table
+                                    .col.l-3
+                                        .column-name #{col_1}
+
+                                    .col.l-2
+                                        .column-name #{col_2}
+
+                                    .col.l-1
+                                        .column-name #{col_3}
+
+                                    .col.l-2
+                                        .column-name #{col_4}
+
+                                    .col.l-2
+                                        .column-name #{col_5}
+
+                                    .col.l-2
+                                        .column-name #{col_6}
+                                grid.body__table 
+                                    
+                                    each item in payment.orderDetails
+                                        .row.table__row
+                                                .col.l-3
+                                                    .column-name 
+                                                        input#username.table__row-item(
+                                                        name='name' 
+                                                        type='text' 
+                                                        value=item.product.name
+                                                        )
+                                                .col.l-2
+                                                    .column-name 
+                                                        input#username.table__row-item(
+                                                        name='color' 
+                                                        type='text' 
+                                                        value=item.product.color
+                                                        )
+                                                .col.l-1
+                                                    .column-name 
+                                                        input#username.table__row-item(
+                                                        name='size' 
+                                                        type='text' 
+                                                        value=item.product.size
+                                                        )
+                                                .col.l-2
+                                                    .column-name 
+                                                        input#username.table__row-item(
+                                                        name='quantity' 
+                                                        type='text' 
+                                                        value=item.quantity
+                                                        )
+                                                .col.l-2
+                                                    .column-name 
+                                                        input#username.table__row-item(
+                                                        name='price' 
+                                                        type='text' 
+                                                        value=item.product.price $
+                                                        )
+                                                        
+                                                .col.l-2
+                                                    .column-name 
+                                                        .product-img-box
+                                                            //- input#username.table__row-item(
+                                                            //- name='price' 
+                                                            //- type='text' 
+                                                            //- )
+                                                            img(
+                                                                src=item.product.productImg
+                                                                class="product-img"
+                                                                alt=item.product.name
+                                                            )
+            .row
+                .bill
+                    p.price Total Price: 
+                    each item in payment.orderDetails
+                        p.product #{item.product.name} * #{item.quantity} + 
+                    p.shipping-price #{payment.shippingPrice} - #{payment.voucher} * #{payment.priceUnderVoucher}$ = #{payment.totalPrice}$  
+                                    //- p.voucher - #{payment.voucher} * #{payment.priceUnderVoucher} 
+                                    //- p.total-price = #{payment.totalPrice}   
+                        
+                    
+//- //- script(src='/js/script.js')
+//- script(src='/js/payment.js')
+
+            //-   .col.l-4
+            //-     .avatar_box
+            //-       .avatar
+            //-         img.avatar_img(src='/assets/images/nguyet_cute.jpg' alt='')
+            //-       button.change-avatar-btn
+            //-         | Upload New Avatar
