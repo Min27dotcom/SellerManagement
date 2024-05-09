@@ -27,6 +27,12 @@ module.exports.index = async (req, res) => {
     }, req.query, countAccs);
 
     const dashboard = await Dashboard.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
+
+//not found when seach
+    const x = await Dashboard.find({username: keyword});
+    if(x.length == 0){
+         req.flash("error", "Account not found!");
+    }
 // Function to check age of client
     function calculateAge(birthDate) {
         const today = new Date();

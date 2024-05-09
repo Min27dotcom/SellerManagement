@@ -30,7 +30,6 @@ module.exports.index = async (req, res) => {
     result = payments;
 
     //search
-    let find = {};
     let keyword = "";
     if(req.query.keyword){
         keyword = req.query.keyword;
@@ -41,8 +40,15 @@ module.exports.index = async (req, res) => {
                 array.push(item);
             }
         });
+        if(array.length == 0){
+            req.flash("error", "Account not found!");
+        }
         result = array;
     }
+
+    // const x = await Dashboard.find({username: keyword});
+    // if(x.length == 0){
+    // }
     //total price
     const orderHistoryMap = new Map();
     orderDetail.forEach((detail) => {

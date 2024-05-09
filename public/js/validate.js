@@ -448,16 +448,13 @@ if(formChangeMulti){
 }
 
 //show alert
-const showAlert = document.querySelector(".alert.alert-success");
-console.log(showAlert);
+const showAlert = document.querySelector("[show-alert]");
 if(showAlert) {
-    // console.log(showAlert);
     const closeAlert = document.querySelector('[close-alert]');
     const time = parseInt(showAlert.getAttribute('data-time'));
-    console.log(time);
     setTimeout(() => {
         showAlert.classList.add("alert-hidden");
-    }, 5000);
+    }, time);
     closeAlert.addEventListener("click", () => {
         showAlert.classList.add("alert-hidden");
     })
