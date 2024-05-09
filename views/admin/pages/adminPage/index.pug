@@ -9,6 +9,7 @@ head
   link(rel='stylesheet' href='/css/main.css')
   link(rel='stylesheet' href='/css/grid.css')
   link(rel='stylesheet' href='/css/responsive.css')
+  link(rel='stylesheet' href='/css/create.css')
   link(rel='stylesheet' href='/assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css')
   link(href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap' rel='stylesheet')
 
@@ -31,13 +32,13 @@ head
                 span(close-alert) x
     .modal__overlay.modal__overlay-details
     .modal__body
-      form#form-4.form.details-acc-form(action=`/dashboard/update/${acc.id}?_method=PATCH` method='POST'
+      form#form-4.form.details-acc-form(action=`/adminPage/${admin.id}?_method=PATCH` method='POST'
         enctype='multipart/form-data'
       )
         .header__form
-          h3.heading DETAILS ACCOUNT
-          button.btn-close.btn-close-details
-            i.btn-close-icon.fa-solid.fa-xmark
+          h3.heading #{pageTitle}
+          a.btn-close(href='/home')
+            i(class="btn-close-icon fa-solid fa-arrow-left")
         .spacer
         .grid.row
           .col.l-6
@@ -47,7 +48,7 @@ head
                 name='username' 
                 type='text' 
                 placeholder='VD: john_doe'
-                value=acc.username
+                value=admin.username
                 )
               span.form-message
             .form-group
@@ -56,7 +57,7 @@ head
                 name='email' 
                 type='text' 
                 placeholder='VD: email@domain.com'
-                value=acc.email
+                value=admin.email
 
                 )
               span.form-message
@@ -66,7 +67,7 @@ head
                 name='password' 
                 type='password' 
                 placeholder='Enter your password'
-                value=acc.password
+                value=admin.password
                 
                 )
               span.form-message
@@ -76,7 +77,7 @@ head
                 name='confirmation_password' 
                 type='password' 
                 placeholder='Confirm your password'
-                value=acc.password
+                value=admin.password
                 
 
                 )
@@ -87,7 +88,7 @@ head
                 name='address' 
                 placeholder='Enter your address' 
                 type='text'
-                value=acc.address
+                value=admin.address
                 
                 )
               span.form-message
@@ -97,7 +98,7 @@ head
                 name='phoneNumber' 
                 placeholder='Enter your phone number' 
                 type='text'
-                value=acc.phoneNumber
+                value=admin.phoneNumber
                 
                 )
               span.form-message
@@ -108,7 +109,7 @@ head
                 name='bankAccountName' 
                 placeholder='VD: JOHN DOE' 
                 type='text'
-                value=acc.bankAccountName
+                value=admin.bankAccountName
 
                 )
               span.form-message
@@ -118,13 +119,13 @@ head
                 name='bankAccountNumber' 
                 placeholder='Enter your bank account number'
                 type='text'
-                value=acc.bankAccountNumber
+                value=admin.bankAccountNumber
                 )
               span.form-message
             .form-group
               label.form-label(for='bank') Bank:
               select#bank.form-control(name='bank' )
-                option(value=acc.bank) #{acc.bank}
+                option(value=admin.bank) #{admin.bank}
                 option(value='Bank of America') Bank of America
                 option(value='Well Fargo') Well Fargo
                 option(value='Morgan Stanley') Morgan Stanley
@@ -134,7 +135,7 @@ head
               input#dateOfBirth.form-control(
                 name='dateOfBirth' 
                 type='date'
-                value=acc.dateOfBirth
+                value=admin.dateOfBirth
                 )
               span.form-message
             .form-group
@@ -145,7 +146,7 @@ head
                     name='gender' 
                     type='radio' 
                     value='Female'
-                    checked=(acc.gender == 'Female' ? true : false)
+                    checked=(admin.gender == 'Female' ? true : false)
                     )
                   |  Female
                 .gender__box-item
@@ -153,7 +154,7 @@ head
                     name='gender' 
                     type='radio' 
                     value='Male'
-                    checked=(acc.gender == 'Male' ? true : false)
+                    checked=(admin.gender == 'Male' ? true : false)
                     )
                   |  Male
               span.form-message
@@ -161,18 +162,41 @@ head
               label.form-label(for='avatar') Avatar:
               input#avatar.form-control(name='avatar' type='file' accept="image/*" upload-image-input)
               img(
-                src=acc.avatar
+                src=admin.avatar
                 upload-image-preview
                 class="image-prev"
               )
               span.form-message
         .row.col.l-12
           button.form-submit UPDATE
-    script(src='/js/script.js')
-
-            //-   .col.l-4
-            //-     .avatar_box
-            //-       .avatar
-            //-         img.avatar_img(src='/assets/images/nguyet_cute.jpg' alt='')
-            //-       button.change-avatar-btn
-            //-         | Upload New Avatar
+script(src='/js/admin.js')
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+  // Mong muốn của chúng ta
+  Validator({
+  form: '#form-3',
+  formGroupSelector: '.form-group',
+  errorSelector: '.form-message',
+  rules: [
+  Validator.isRequired('#username', 'Enter your username!'),
+  Validator.isEmail('#email'),
+  Validator.minLength('#password', 6),
+  Validator.isRequired('#confirmation_password'),
+  Validator.isRequired('#address'),
+  Validator.isRequired('#phoneNumber'),
+  Validator.isRequired('#bankAccountName'),
+  Validator.isRequired('#bankAccountNumber'),
+  //- Validator.isRequired('#bank'),
+  Validator.isRequired('#dateOfBirth'),
+  Validator.isRequired('#gender'),
+  //- Validator.isRequired('#avatar'),
+  Validator.isConfirmed('#confirmation-password', function () {
+  return document.querySelector('#form-3 #password').value;
+  }, 'Password error!')
+  ],
+  onSubmit: function (data) {
+  // Call API
+  console.log(data);
+  }
+  });
+  });

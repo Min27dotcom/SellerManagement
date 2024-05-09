@@ -12,7 +12,7 @@ module.exports = (app) => {
     app.use(PATH_DASHBOARD, dashboardRoute);
     app.use(PATH_DASHBOARD + "/listBlocked", listBlockedRoute);
     app.use("/historyPayment", historyPaymentRoute);
-    app.use("/", loginRoute);
+    app.use("/login", loginRoute);
     app.use("/adminPage", adminPageRoute);
     
 }

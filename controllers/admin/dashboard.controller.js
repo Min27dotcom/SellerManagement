@@ -245,35 +245,38 @@ module.exports.updatePatch = async (req, res) => {
     if(req.file){
         req.body.avatar = `/uploads/${req.file.filename}`
     }
+    const account = await Dashboard.findById(id);
+
+    const existingUser = await Dashboard.find({
+        _id: {$ne: id}
+    });
 
     const username = await Dashboard.findOne({
         username: req.body.username,
         deleted: false
     });
-    //thiếu thực hiện sửa một thuộc tính 2 lần liên tiếp đã có trong csdl
-    const bankAccountNumber = await Dashboard.findOne({
-        bankAccountNumber: req.body.bankAccountNumber,
-        deleted: false
-    });
+    let ok = 0;
+    existingUser.forEach(acc => {
+        if(username.username === acc.username || username.bankAccountNumber === acc.bankAccountNumber){
+            req.flash("error", "Username/Bank Account Number Already Exists!");
+            ok = 1;
+        }
+    })
 
-    if (username) {
-        req.flash("error", " Username Already Exists!");
-        return res.redirect("back");
-    } 
-
-    if (bankAccountNumber) {
-        req.flash("error", "Bank Account Already Exists!");
-        return res.redirect("back");
-    } 
-    try {
-        
-        await Dashboard.updateOne({_id: id}, req.body);
-        req.flash("success", "Update success!");
-
-    }catch(e) {
-        req.flash("error", "Update fail!");
+    if(ok === 1){
+        res.redirect("back");
+    } else {
+        try {
+            await Dashboard.updateOne({_id: id}, req.body);
+            req.flash("success", "Update success!");
+    
+        }catch(e) {
+            req.flash("error", "Update fail!");
+        }
+    
+        res.redirect("back");
     }
-    res.redirect("back");
+
 }
 
 //[DELETE]/delete/:id

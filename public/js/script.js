@@ -268,53 +268,6 @@ usernameSortRadioBtns.forEach(radioBtn => {
 });
 // kết thúc xử lý ẩn hiện filter selections
 
-//bắt sự kiện modal create form
-// const modalCreateForm = document.querySelector(".modal.modal_create_acc");
-// const modalOverlay = document.querySelector(".modal__overlay");
-// const btnCreateAcc = document.querySelector(".create-acc-btn");
-// const btnCloseCreateModal = document.querySelector(".btn-close");
-
-// function showModalCreateForm() {
-//     modalCreateForm.classList.add('show');
-// }
-
-// function hideModalCreateForm() {
-//     modalCreateForm.classList.remove('show');
-// }
-
-// btnCreateAcc.addEventListener('click', showModalCreateForm);
-// modalOverlay.addEventListener('click', hideModalCreateForm);
-// btnCloseCreateModal.addEventListener('click', hideModalCreateForm);
-
-// modalCreateForm.addEventListener('click', function (event) {
-//     event.stopPropagation()
-// })
-
-//bắt sự kiện details form
-
-const modalDetailsAcc = document.querySelector(".modal_details_acc");
-const modalOverlayDetails = document.querySelector(".modal__overlay.modal__overlay-details");
-const btnPencils = document.querySelectorAll(".btn_pencil");
-const btnCloseDetailModal = document.querySelector(".btn-close.btn-close-details");
-
-function toggleModalDetailsForm() {
-    modalDetailsAcc.classList.toggle('show');
-}
-
-btnPencils.forEach(btnPencil => {
-
-    btnPencil.addEventListener('click', () => {
-        toggleModalDetailsForm();
-    });
-})
-
-modalOverlayDetails.addEventListener('click', toggleModalDetailsForm);
-btnCloseDetailModal.addEventListener('click', toggleModalDetailsForm);
-
-modalDetailsAcc.addEventListener('click', function (event) {
-    event.stopPropagation()
-})
-
 //bắt sự kiện btn change avatar
 const changeAvatarBtn = document.querySelector(".change-avatar-btn");
 const modalChangeAvatar = document.querySelector(".modal.modal__change-avatar");

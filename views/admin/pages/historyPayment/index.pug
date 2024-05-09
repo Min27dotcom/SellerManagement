@@ -55,13 +55,13 @@ head
             span.header__navbar-user-name Min_27
             ul.header__navbar-user-menu
               li.header__navbar-user-item
-                a.header__navbar-user-item-link(href='../home') Home
+                a.header__navbar-user-item-link(href='/home') Home
               li.header__navbar-user-item
-                a.header__navbar-user-item-link(href='../dashboard') Dashboard
+                a.header__navbar-user-item-link(href='/dashboard') Dashboard
               li.header__navbar-user-item
-                a.header__navbar-user-item-link(href='') My Account
+                a.header__navbar-user-item-link(href='/adminPage') My Account
               li.header__navbar-user-item.header__navbar-user-item--separate
-                a(href='../') Logout
+                a(href='/') Logout
   .app__container.app__container-fixed(checkbox-multi)
     .grid.wide
       .row.body__nav
@@ -182,7 +182,7 @@ script.
   Validator.isRequired('#bank'),
   Validator.isRequired('#date_of_birth'),
   Validator.isRequired('#gender'),
-  Validator.isRequired('#avatar'),
+  //- Validator.isRequired('#avatar'),
   Validator.isConfirmed('#password_confirmation', function () {
   return document.querySelector('#form-1 #password').value;
   }, 'Password error!')
