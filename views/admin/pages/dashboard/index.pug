@@ -233,7 +233,9 @@ head
     )
   footer.footer
     //- .grid.footer_background
-script(src='/js/script.js')
+    
+//- script(src='/js/script.js')
+script(src='/js/validate.js')
 //- // <script src="./validator.js"></script>
 script.
   document.addEventListener('DOMContentLoaded', function () {
@@ -243,7 +245,7 @@ script.
   formGroupSelector: '.form-group',
   errorSelector: '.form-message',
   rules: [
-  Validator.isRequired('#fullname', 'Enter your username!'),
+  Validator.isRequired('#username', 'Enter your username!'),
   Validator.isEmail('#email'),
   Validator.minLength('#password', 6),
   Validator.isRequired('#password_confirmation'),

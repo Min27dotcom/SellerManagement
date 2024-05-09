@@ -34,8 +34,6 @@ module.exports.index = async (req, res) => {
     let keyword = "";
     if(req.query.keyword){
         keyword = req.query.keyword;
-        const regex = new RegExp(keyword, "i");
-        find.username = regex;
         let array = []
         payments.forEach(item => {
             const username = item.buyer.username;
@@ -45,9 +43,6 @@ module.exports.index = async (req, res) => {
         });
         result = array;
     }
-
-
-
     //total price
     const orderHistoryMap = new Map();
     orderDetail.forEach((detail) => {

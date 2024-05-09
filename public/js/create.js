@@ -177,6 +177,7 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 
 //upload image
 const uploadImage = document.querySelector('[upload-image]');
+console.log(uploadImage);
 if(uploadImage) {
     const uploadImageInput = document.querySelector('[upload-image-input]');
     const uploadImagePreview = document.querySelector('[upload-image-preview]');

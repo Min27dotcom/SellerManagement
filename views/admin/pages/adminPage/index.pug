@@ -32,9 +32,7 @@ head
                 span(close-alert) x
     .modal__overlay.modal__overlay-details
     .modal__body
-      form#form-4.form.details-acc-form(action=`/adminPage/${admin.id}?_method=PATCH` method='POST'
-        enctype='multipart/form-data'
-      )
+      form#form-4.form.details-acc-form(action=`/adminPage/${admin.id}?_method=PATCH` method='POST' enctype="multipart/form-data")
         .header__form
           h3.heading #{pageTitle}
           a.btn-close(href='/home')

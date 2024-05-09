@@ -33,8 +33,7 @@ head
     .app__container
         .grid.wide
             .row
-                form#form-4(action=`/historyPayment/detail/${payment.id}?_method=PATCH` method='POST'
-                    enctype='multipart/form-data'
+                form#form-4(action=`/historyPayment/detail/${payment.id}?_method=PATCH` method='POST' enctype="multipart/form-data"
                 )
                     .header-form
                         h3.heading #{pageTitle}

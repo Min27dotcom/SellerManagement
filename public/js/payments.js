@@ -217,9 +217,11 @@ if(linkPaginations){
     let url = new URL(window.location.href);
     linkPaginations.forEach(link => {
         link.addEventListener("click", () => {
+            new_url = new URL(url.origin + url.pathname);
+
             const page = link.getAttribute("link-pagination");
-            url.searchParams.set("page", page);
-            window.location.href = url.href;
+            new_url.searchParams.set("page", page);
+            window.location.href = new_url.href;
         })
     })
 }
@@ -306,7 +308,8 @@ const sortBtn = document.querySelector(".sort__btn");
 
 if(sortRadios.length > 0){
     let url = new URL(window.location.href);
-    new_url = new URL(url.origin + url.pathname);
+    // new_url = new URL(url.origin + url.pathname);
+
     sortRadios.forEach(btn => {
         btn.addEventListener("change", () => {
             const value = btn.getAttribute("value");
@@ -318,13 +321,13 @@ if(sortRadios.length > 0){
             sortBtn.addEventListener("click", () => {
                 const sortSelect = sortBtn.getAttribute("value");
                 if(sortSelect === "asc") {
-                    new_url.searchParams.set("sort", "1");
+                    url.searchParams.set("sort", "1");
                 } else if(sortSelect === "desc"){
-                    new_url.searchParams.set("sort", "2");
+                    url.searchParams.set("sort", "2");
                 } else if(sortSelect === ""){
-                    new_url.searchParams.delete("sort");
+                    url.searchParams.delete("sort");
                 }
-                window.location.href = new_url.href;
+                window.location.href = url.href;
             });
         
         })

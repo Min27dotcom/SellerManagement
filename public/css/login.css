@@ -188,17 +188,24 @@ html {
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  background-image: url("../assets/images/background_login.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .form {
+  left: 50%;
   width: 360px;
   min-height: 100px;
   padding: 32px 24px;
   text-align: center;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 2px;
   margin: 24px;
   align-self: center;
-  box-shadow: 0 2px 5px 0 rgba(51,62,73,.1);
+  box-shadow: var(--box-shadow);
+  top: 50%;
+  transform: translate(-50%, -50%);
+
 }
 .form .heading {
   font-size: 2rem;

@@ -8,7 +8,9 @@ const multer  = require('multer')//upload image
 const app = express();
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.json());
 
 //nhúng mongoose
 const database = require("./config/database");

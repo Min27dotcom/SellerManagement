@@ -31,9 +31,7 @@ head
           ) #{messages.success}
               span(close-alert) x
     .modal__body
-      form#form-4.form.details-acc-form(action=`/dashboard/update/${acc.id}?_method=PATCH` method='POST'
-        enctype='multipart/form-data'
-      )
+      form#form-4.form.details-acc-form(action=`/dashboard/update/${acc.id}?_method=PATCH` method='POST' enctype="multipart/form-data")
         .header__form
           h3.heading DETAILS ACCOUNT
           a.btn-close(href='/dashboard')
@@ -177,6 +175,7 @@ head
             //-       button.change-avatar-btn
             //-         | Upload New Avatar
 script(src='/js/update.js')
+script(src='/js/uploadAvatar.js')
 script.
   document.addEventListener('DOMContentLoaded', function () {
   // Mong muốn của chúng ta

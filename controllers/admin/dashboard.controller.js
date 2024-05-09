@@ -20,8 +20,7 @@ module.exports.index = async (req, res) => {
     }
 
 //pagination
-    const countAccs = await Dashboard.countDocuments(find);
-
+    const countAccs = await Dashboard.countDocuments();
     let objectPagination = paginationHelper({
         limitItems: 5,
         currentPage: 1,
@@ -56,7 +55,7 @@ module.exports.index = async (req, res) => {
         return item;
     })
     result = newDashboard;
-//lọc tuổi
+//filter by age
     let filter = "";
     if(req.query.agefilter){
         filter = req.query.agefilter
@@ -147,7 +146,6 @@ module.exports.changeBlocked = async (req, res) => {
 module.exports.changeMulti = async (req, res) => {
     const type = req.body.type;
     const ids = req.body.ids.split(", ");
-    console.log(ids);
 
     switch (type) {
         case "active":
@@ -245,12 +243,11 @@ module.exports.updatePatch = async (req, res) => {
     if(req.file){
         req.body.avatar = `/uploads/${req.file.filename}`
     }
-    const account = await Dashboard.findById(id);
 
     const existingUser = await Dashboard.find({
         _id: {$ne: id}
     });
-
+    console.log(req.body.avatar);
     const username = await Dashboard.findOne({
         username: req.body.username,
         deleted: false

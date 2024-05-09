@@ -5,9 +5,9 @@ module.exports.index = async (req, res) => {
     try {
         //find account to update
         const admin = await Dashboard.findOne({
-            _id: '663ba4f1e502a73ed0fc7842'
+            _id: '663c4add81adc04e32b8e285'
         });
-
+        console.log(admin)
 
         res.render("admin/pages/adminPage/index", {
             pageTitle: "Admin Page",
@@ -21,11 +21,11 @@ module.exports.index = async (req, res) => {
 }
 //[PATCH]] /adminPage/:id
 module.exports.adminPatch = async (req, res) => {
+    console.log(req.params)
     const id = req.params.id;
     if(req.file){
         req.body.avatar = `/uploads/${req.file.filename}`
     }
-
     const existingUser = await Dashboard.find({
         _id: {$ne: id}
     });
