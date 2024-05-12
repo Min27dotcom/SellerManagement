@@ -42,7 +42,6 @@ module.exports.login = async (req, res) => {
         const admin = await Dashboard.findOne({
             username: req.body.username
         });
-        console.log(admin)
         if(!admin){
             res.status(404).json("Wrong username");
         }

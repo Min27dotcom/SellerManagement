@@ -204,7 +204,7 @@ html {
   align-self: center;
   box-shadow: var(--box-shadow);
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-55%, -50%);
 
 }
 .form .heading {

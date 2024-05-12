@@ -20,7 +20,7 @@ module.exports.index = async (req, res) => {
     }
 
 //pagination
-    const countAccs = await Dashboard.countDocuments();
+    const countAccs = await Dashboard.countDocuments(find);
     let objectPagination = paginationHelper({
         limitItems: 5,
         currentPage: 1,
@@ -30,7 +30,7 @@ module.exports.index = async (req, res) => {
 
 //not found when seach
     const x = await Dashboard.find({username: keyword});
-    if(x.length == 0){
+    if(x.length == 0 && keyword !== ""){
          req.flash("error", "Account not found!");
     }
 // Function to check age of client

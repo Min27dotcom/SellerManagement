@@ -1,5 +1,8 @@
 .app {
     overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--body-color);
 }
 
 .header {
@@ -526,7 +529,7 @@
 }
 
 .header__search {
-    border-radius: 2px;
+    border-radius: 21px;
     flex: 1;
     height: 40px;
     background-color: var(--white-color);
@@ -2157,6 +2160,7 @@ i.home-product-item__like-icon-fill {
 
 .table__row-link {
     text-decoration: none;
+    color: black;
 }
 
 .btn-create-acc {
@@ -2168,6 +2172,8 @@ i.home-product-item__like-icon-fill {
     background: var(--primary-color);
 }
 /*  */
+
+
 
 
 
